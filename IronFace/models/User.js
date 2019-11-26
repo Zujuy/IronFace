@@ -1,8 +1,9 @@
   
-const { Schema, model } = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const userSchema = Schema({
+
+const UserSchema = Schema({
   email: {
     type: String,
     required: true,
@@ -13,7 +14,7 @@ const userSchema = Schema({
 
   password: String,
 
-  name:{
+  username:{
     type: String,
     required: true,
     default:"Ironhacker",
@@ -32,9 +33,9 @@ const userSchema = Schema({
     default:"undifine"
   },
 
-  birthdate: Number,
+  birthdate: String,
 
-  from:String,
+  wFrom:String,
 
   bootCamp: {
     type: String,
@@ -69,6 +70,8 @@ const userSchema = Schema({
 });
 
 
-userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
-module.exports = model("User", userSchema);
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = User;
 
