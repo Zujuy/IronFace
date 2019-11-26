@@ -5,19 +5,9 @@ const { ensureLoggedIn, ensureLoggedOut } = require("connect-ensure-login");
 const User = require("../models/User");
 const uploadCloud = require("../config/cloudinary");
 
-router.get("/login", ensureLoggedOut(), (req, res) => {
-  res.render("authentication/login", { message: req.flash("error") });
-});
-
-router.post("/login", ensureLoggedOut(), passport.authenticate("local-login", {
-    successRedirect: "/profile",
-    failureRedirect: "/login",
-    failureFlash: true
-  })
-);
 
 router.get("/signup", ensureLoggedOut(), (req, res) => {
-  res.render("authentication/signup", { message: req.flash("error") });
+  res.render("auth/signup", { message: req.flash("error") });
 });
 
 router.post(
@@ -30,14 +20,26 @@ router.post(
   })
 );
 
+router.get("/login", ensureLoggedOut(), (req, res) => {
+  res.render("auth/login", { message: req.flash("error") });
+});
+
+router.post("/login", ensureLoggedOut(), passport.authenticate("local-login", {
+    successRedirect: "/profile",
+    failureRedirect: "/login",
+    failureFlash: true
+  })
+);
+
+
 router.get("/profile", ensureLoggedIn("/login"), (req, res) => {
-  res.render("authentication/profile", {
+  res.render("auth/profile", {
     user: req.user
   });
 });
 
 router.get("/editPic", ensureLoggedIn("/login"), (req, res) => {
-  res.render("authentication/editPic", {
+  res.render("auth/editPic", {
     user: req.user
   });
 });
@@ -51,7 +53,7 @@ router.post("/editPic", ensureLoggedIn("/login"), uploadCloud.single("photo"), (
    }
 )
 
-router.get("/logout", ensureLoggedIn("/login"), (req, res) => {
+router.get("/logout", ensureLoggedIn("/"), (req, res) => {
   req.logout();
   res.redirect("/");
 });
