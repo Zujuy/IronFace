@@ -8,12 +8,13 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/User");
-
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const flash = require("connect-flash");
 const hbs = require("hbs");
+const bcrypt = require("bcrypt");
+
 
 mongoose.connect(process.env.DB, { useNewUrlParser: true });
 
@@ -45,35 +46,87 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use(
-  "local-login",
-  new LocalStrategy((username, password, next) => {
-    User.findOne({ username }, (err, user) => {
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return next(null, false, { message: "Incorrect username" });
-      }
-      if (!bcrypt.compareSync(password, user.password)) {
-        return next(null, false, { message: "Incorrect password" });
-      }
 
-      return next(null, user);
-    });
-  })
-);
 
+
+
+//login
+// passport.use(
+//   "local-login",
+//   new LocalStrategy((req,res, next) => {
+//     const {email} = req.body 
+//     const {password} = req.body 
+
+//     console.log(email)
+//     console.log(password)
+
+
+//     User.findOne(email, (err, user) => {
+//       if (err) {
+//         return next(err);
+//       }
+//       if (!user) {
+//         return next(null, false, { message: "Incorrect email" });
+//       }
+//       if (!bcrypt.compareSync(password, user.password)) {
+//         return next(null, false, { message: "Incorrect password" });
+//       }
+
+//       return next(null, user);
+//     });
+//   })
+// );
+
+
+
+
+
+
+
+// passport.use('local-login', new LocalStrategy({
+//   // Fields to accept
+//   usernameField: 'email', // default is username, override to accept email
+//   passwordField: 'password',
+//   passReqToCallback: true // allows us to access req in the call back
+// }, async (req, email, password, done) => {
+//   // Check if user and password is valid
+//   let User = await User.findBy('email', email)
+//   let passwordValid = user && bcrypt.compareSync(password, user.password)
+
+//   // If password valid call done and serialize user.id to req.user property
+//   if (passwordValid) {
+//     return done(null, {
+//       id: user.id
+//     })
+//   }
+//   // If invalid call done with false and flash message
+//   return done(null, false, {
+//     message: 'Invalid email and/or password'
+//   });
+// }))
+
+
+
+
+
+
+
+
+
+
+
+
+//signup
 passport.use(
   "local-signup",
   new LocalStrategy(
     { passReqToCallback: true },
-    (req, username, password, next) => {
+    (req, email, password, next) => {
       // To avoid race conditions
       process.nextTick(() => {
         User.findOne(
           {
-            username: username
+            email: email
           },
           (err, user) => {
             if (err) {
@@ -83,8 +136,9 @@ passport.use(
             if (user) {
               return next(null, false);
             } else {
-              // Destructure the body
-              const { username, email, password } = req.body;
+
+              const { username, email, password, lastName, genre, birthdate, wFrom, bootCamp, courseMode, role } = req.body;
+              console.log(username, email, password, lastName, genre, birthdate, wFrom, bootCamp, courseMode, role)
               const hashPass = bcrypt.hashSync(
                 password,
                 bcrypt.genSaltSync(8),
@@ -93,7 +147,14 @@ passport.use(
               const newUser = new User({
                 username,
                 email,
-                password: hashPass
+                password: hashPass,
+                lastName,
+                genre,
+                birthdate,
+                wFrom,
+                bootCamp,
+                courseMode,
+                role
               });
 
               newUser.save(err => {
@@ -109,6 +170,13 @@ passport.use(
     }
   )
 );
+
+
+
+
+
+
+
 
 app.use(flash());
 app.use(passport.initialize());
@@ -162,6 +230,12 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'IronFace';
 module.exports = app;
+
+
+
+
+
+
 
 
 
