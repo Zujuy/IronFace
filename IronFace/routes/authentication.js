@@ -6,19 +6,17 @@ const User = require("../models/User");
 const uploadCloud = require("../config/cloudinary");
 
 
-router.get("/signup", ensureLoggedOut(), (req, res) => {
-  res.render("auth/signup", { message: req.flash("error") });
+
+router.get('/signup', ensureLoggedOut(), (req, res) => {
+  res.render('authentication/signup', { message: req.flash('error')});
 });
 
-router.post(
-  "/signup",
-  ensureLoggedOut(),
-  passport.authenticate("local-signup", {
-    successRedirect: "/profile",
-    failureRedirect: "/signup",
-    failureFlash: true
-  })
-);
+router.post('/signup', ensureLoggedOut(), passport.authenticate('local-signup', {
+successRedirect : '/',
+failureRedirect : '/signup',
+failureFlash : true
+}));
+
 
 router.get("/login", ensureLoggedOut(), (req, res) => {
   res.render("auth/login", { message: req.flash("error") });

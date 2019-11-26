@@ -2,6 +2,7 @@
 const { Schema, model } = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 
+
 const userSchema = Schema({
   email: {
     type: String,
