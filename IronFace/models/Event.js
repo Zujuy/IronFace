@@ -34,9 +34,10 @@ timeEnd:{
  },
 
   
-    timestamps: true,
-    versionKey: false
-  
+ timestamps: {
+  createdAt: "created_at",
+  updatedAt: "updated_at"
+}
 });
 
 const Event = mongoose.model('Event', eventSchema);

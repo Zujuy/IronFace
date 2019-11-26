@@ -35,8 +35,8 @@ const postSchema = Schema({
   },
 
   
-    timestamps: true,
-    versionKey: false
+
+    
   
 });
 
