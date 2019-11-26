@@ -15,15 +15,27 @@
 
    <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="index">Home</a></li>
+      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
         <li><a href="/">About us</a></li>
         <li><a href="login"> Log In</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
         <li><a href="/"> Add student</a></li>
       </ul>
     </div>
   </nav>
+
+  {{!-- este es el nav responsive --}}
+
+  <ul class="sidenav right" id="mobile-demo">
+    <li><a href="/">Home</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="login"> Log In</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+        <li><a href="/"> Add student</a></li>
+  </ul>
 
  {{{body}}}
 
@@ -35,8 +47,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script src="/javascripts/script.js"></script>
   <script>
+
+     $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
     
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems);
   });
@@ -46,4 +62,9 @@
   });
   </script>
 </body>
-</html>
+
+<footer>
+  <div class="container">
+    <p>© 2019 Copyright Itza Blanco and Rodrigo Salas</p>
+  </div>
+</footer>
