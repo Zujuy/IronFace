@@ -1,16 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+  <link rel="icon" type="image/png" href="../images/favicon.ico" sizes="64x64">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
 
-  {{{body}}}
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="index">Home</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="login"> Log In</a></li>
+        <li><a href="/"> Agregar Alumno</a></li>
+      </ul>
+    </div>
+  </nav>
 
+ {{{body}}}
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script src="/javascripts/script.js"></script>
+  <script>
+    
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems);
+  });
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+  </script>
 </body>
 </html>
