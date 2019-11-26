@@ -4,32 +4,32 @@
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
+        <div class="input-field col s6" action="/signup" method="post">
+          <input id="first_name" type="text" class="validate"  name="name">
           <label for="first_name">Firs Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="validate" name="lastName">
           <label for="last_name">Last Name</label>
         </div>
       </div>
      <div class="row">
         <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate">
+          <input id="first_name" type="text" class="validate" name="email">
           <label for="first_name">e-mail</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
+          <input id="last_name" type="text" class="validate" name="password">
           <label for="last_name">Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s4">
-        <input type="text" class="datepicker">
+        <input type="text" class="datepicker" name="brthdate">
         <label for="birthday">Birthday</label>
     </div>
         <div class="input-field col s4">
-        <select multiple>
+        <select name="genre" multiple>
       <option value="" disabled selected>Choose your option</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
@@ -37,7 +37,7 @@
     <label>Gender</label>
   </div>
         <div class="input-field col s4">
-    <select multiple>
+    <select name="bootCamp" multiple>
       <option value="" disabled selected>Choose your option</option>
       <option value="Data Analytics">Data Analytics</option>
       <option value="Web Development">Web Development</option>
@@ -48,7 +48,7 @@
   </div>
     <div class="row">
         <div class="input-field col s6">
-    <select multiple>
+    <select name="courseMode" multiple>
       <option value="courseMode" disabled selected>Choose your option</option>
       <option value="Full time">Full time</option>
       <option value="Part time">Part time</option>
@@ -56,7 +56,7 @@
     <label>Course Mode</label>
   </div>
      <div class="input-field col s6">
-    <select multiple>
+    <select name="role" multiple>
       <option value="role" disabled selected>Choose your option</option>
       <option value="Alumn">Alumn</option>
       <option value="Teacher Assistant">Teacher Assistant</option>
@@ -67,5 +67,6 @@
     <label>User</label>
   </div>
  </div>
+ <button type="submit" class="btn btn-primary">submit</button>
     </form>
   </div>
