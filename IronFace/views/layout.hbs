@@ -22,7 +22,12 @@
         <li><a href="/">About us</a></li>
         <li><a href="login"> Log In</a></li>
         <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
-        <li><a href="/"> Add student</a></li>
+        
+           {{#if isActive}}
+           <li><a href="/logout"> Logout</a></li>
+            </div>
+            {{/if}}
+
       </ul>
     </div>
   </nav>
