@@ -15,13 +15,12 @@
 {{#if isNo}}
    <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
       <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         <li><a href="/">About us</a></li>
         <li><a href="login"> Log In</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
       </ul>
     </div>
   </nav>
@@ -32,22 +31,19 @@
     <li><a href="/">Home</a></li>
         <li><a href="/">About us</a></li>
         <li><a href="login"> Log In</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
-        <li><a href="/"> Add student</a></li>
   </ul>
 {{/if}}
 
 {{#if isMortal}}
    <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
       <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/">Profile</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
       </ul>
     </div>
   </nav>
@@ -56,27 +52,22 @@
 
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/">Profile</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
-        <li><a href="/"> Add student</a></li>
   </ul>
 {{/if}}
 
 {{#if isTeacher}}
    <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
       <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Crear evento</a></li>
-        <li><a href="/">Mis eventos</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
       </ul>
     </div>
   </nav>
@@ -85,30 +76,23 @@
 
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Crear evento</a></li>
-        <li><a href="/">Mis eventos</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
-        <li><a href="/"> Add student</a></li>
   </ul>
 {{/if}}
 
 {{#if isGod}}
    <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" class="brand-logo left"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
       <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/{{user.role}}/profile">Profile</a></li>
-        <li><a href="/">Crear evento</a></li>
-        <li><a href="/">Mis eventos</a></li>
-         <li><a href="/">Agregar Usuarios</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
+        <li><a href="/">Add Student</a></li>
         <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
       </ul>
     </div>
   </nav>
@@ -117,14 +101,11 @@
 
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/ironhacker/feeds">Feeds</a></li>
-        <li><a href="/">About us</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Crear evento</a></li>
-        <li><a href="/">Mis eventos</a></li>
+        <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
          <li><a href="/">Agregar Usuarios</a></li>
-        <li><a href="/logout"> Log Out</a></li>
-        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+        <li><a href="/"><span class="new badge blue lighten-2">4</span></a><i class="material-icons right">notifications_active</i></li>
         <li><a href="/"> Add student</a></li>
+        <li><a href="/logout"> Log Out</a></li>
   </ul>
 {{/if}}
   
@@ -156,11 +137,41 @@
    $(document).ready(function(){
     $('.modal').modal();
   });
+  
+   $('.dropdown-trigger').dropdown();
+
+
+
+   $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
+
+
   </script>
 </body>
 
-<footer>
+<footer class="page-footer grey lighten-5 center-align">
   <div class="container">
-    <p>© 2019 Copyright Itza Blanco and Ricardo Salas</p>
+    <div class="row">
+      <div class="col s12">
+        <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/"><h5>About Ironhack</h5></a></li>
+      </div>
+      <div class="col s12">
+          <ul>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/web-development-bootcamp">Web Development full time</a></li>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/web-development-part-time">web Development part time</a></li>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/curso-ux-ui-design">UX/UI full time</a></li>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/ux-ui-design-part-time">UX/UI part time</a></li>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/data-analytics-bootcamp">Data Analytics full time</a></li>
+            <li><a class="grey-text text-blue-grey lighten-3" href="https://www.ironhack.com/es/cursos/data-analytics-part-time">Data Analytics part time</a></li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container grey-text text-blue-grey lighten-3">
+       © 2019 Ironhackers Itza Blanco and Ricardo Salas
+    </div>
   </div>
 </footer>
+            

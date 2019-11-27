@@ -1,0 +1,75 @@
+<div class="container">
+<h3> Sign Up</h3>
+  
+  <div class="row">
+    <form class="col s12" action="/signup" method="POST">
+      <div class="row">
+        <div class="input-field col s6" >
+          <input id="first_name" type="text" class="validate"  name="username">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="lastName">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+     <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" name="email">
+          <label for="first_name">e-mail</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate" name="password">
+          <label for="last_name">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+        <input type="text" class="datepicker" name="birthdate">
+        <label for="birthday">Birthday</label>
+    </div>
+        <div class="input-field col s4">
+        <select name="genre" multiple>
+      {{!-- <option value="" disabled selected>Choose your option</option> --}}
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <label>Gender</label>
+  </div>
+        <div class="input-field col s4">
+    <select name="bootCamp" multiple>
+      {{!-- <option value="" disabled selected>Choose your option</option> --}}
+      <option value="Data Analytics">Data Analytics</option>
+      <option value="Web Development">Web Development</option>
+      <option value="UX/UI Design">UX/UI Design</option>
+    </select>
+    <label>Bootcamp</label>
+  </div>
+  </div>
+    <div class="row">
+        <div class="input-field col s6">
+    <select name="courseMode" multiple>
+      {{!-- <option value="courseMode" disabled selected>Choose your option</option> --}}
+      <option value="Full time">Full time</option>
+      <option value="Part time">Part time</option>
+    </select>
+    <label>Course Mode</label>
+  </div>
+     <div class="input-field col s6">
+    <select name="role" multiple>
+      {{!-- <option value="role" disabled selected>Choose your option</option> --}}
+      <option value="Student">Student</option>
+      <option value="Teacher Assistant">Teacher Assistant</option>
+      <option value="Lead Teacher">Lead Teacher</option>
+      <option value="Staff">Staff</option>
+      <option value="Iron Buddy">Iron Buddy</option>
+    </select>
+    <label>User</label>
+  </div>
+ </div>
+   <button class="btn waves-effect blue lighten-2" type="submit" name="action">Submit
+    <i class="material-icons right">edit</i>
+  </button>
+    </form>
+  </div>
+</div>
