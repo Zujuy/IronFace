@@ -147,7 +147,7 @@ passport.use(
               const newUser = new User({
                 username,
                 email,
-                password: hashPass,
+                password,
                 lastName,
                 genre,
                 birthdate,
@@ -229,6 +229,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // default value for title local
 app.locals.title = 'IronFace';
+
 module.exports = app;
 
 
