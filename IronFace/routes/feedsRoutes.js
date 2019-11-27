@@ -1,20 +1,15 @@
-// const router = require("express").Router();
-// const { profileGet, profilePost } = require("../controllers/auth.controller");
-// const {
-//   favorGet,
-//   favorPost,
-//   activeGet,
-//   activePost
-// } = require("../controllers/dogooder.controller");
-// const upload = require("../config/cloudinary");
+const router = require("express").Router();
+const { feedsGet, feedsPost } = require("../controllers/auth.controllers");
 
-// router.get("/profile", profileGet);
-// router.post("/profile", upload.single("photoURL"), profilePost);
+const upload = require("../config/cloudinary");
+
+router.get("/feeds", feedsGet);
+// router.post("/feeds", upload.single("photoURL"), feedsPost);
 
 // router.get("/favor/:id", favorGet);
 // router.post("/favor/:id", favorPost);
 
 // router.get("/active", activeGet);
-// //router.post("/favor/active", activePost);
+// router.post("/favor/active", activePost);
 
-// module.exports = router;
+module.exports = router;

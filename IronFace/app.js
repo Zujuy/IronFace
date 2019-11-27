@@ -66,7 +66,7 @@ const feedsRouetes = require("./routes/feedsRoutes");
 
 app.use("/", whichRole, index);
 app.use("/", authRoutes);
-//  app.use("/ironhacker", isAuth, feedsRouetes);
+ app.use("/ironhacker", isAuth, feedsRouetes);
 
 module.exports = app;
 

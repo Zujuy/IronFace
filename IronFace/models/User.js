@@ -49,8 +49,8 @@ const userSchema = Schema({
 
   role: {
     type: String,
-    enum: ["Alumn","Teacher Assistant","Lead Teacher","Staff", "Iron Buddy"],
-    default:"Alumn"
+    enum: ["Student","Teacher Assistant","Lead Teacher","Staff", "Iron Buddy"],
+    default:"Student"
   },
 
   image: {
@@ -65,12 +65,6 @@ const userSchema = Schema({
     }
   ],
 
-  isActive: {
-    type: Boolean,
-    required: true,
-    default: true
-  },
- 
 });
 
 

@@ -1,19 +1,54 @@
 exports.whichRole = (req, res, next) => {
-  // if (
-    req.isAuthenticated()
-  //   ) {
-  //   if (req.user.role === "Needy") {
-  //     req.app.locals.isNeedy = true;
-  //   } else if (req.user.role === "Do-Gooder") {
-  //     req.app.locals.isDoGooder = true;
-  //   } else {
-  //     req.app.locals.isNeedy = false;
-  //     req.app.locals.isDoGooder = false;
-  //   }
-  // } else {
-  //   req.app.locals.isNeedy = false;
-  //   req.app.locals.isDoGooder = false;
-  // }
+  if (req.isAuthenticated()) {
+    if (
+      req.user.role === "Student" || 
+      req.user.role === "Iron Buddy"  
+    
+    ) {
+      req.app.locals.isMortal = true;
+      req.app.locals.isNo = false;
+    } 
+    else if (
+      req.user.role === "Teacher Assistant"||
+      req.user.role === "Lead Teacher"
+      
+      ) {
+        req.app.locals.isTeacher = true;
+        req.app.locals.isNo = false;
+      } 
+      else if (
+        req.user.role === "Staff"
+        
+        ) {
+          req.app.locals.isGod = true;
+          req.app.locals.isNo = false;
+        } 
+        
+        
+        else if (
+          req.user.role === ""
+          
+          ) {
+            req.app.locals.isNo = true;
+          } 
+         
+
+
+    
+    else {
+      req.app.locals.isMortal = false;
+      req.app.locals.isTeacher = false;
+      req.app.locals.isGod = false;
+      req.app.locals.isNo = true;
+
+    }
+  } else {
+    req.app.locals.isMortal = false;
+    req.app.locals.isTeacher = false;
+    req.app.locals.isGod = false;
+    req.app.locals.isNo = true;
+
+  }
   next();
 };
 
