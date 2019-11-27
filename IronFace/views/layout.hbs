@@ -12,7 +12,7 @@
 </head>
 
 <body>
-
+{{#if isNo}}
    <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
@@ -22,7 +22,6 @@
         <li><a href="/">About us</a></li>
         <li><a href="login"> Log In</a></li>
         <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
-        <li><a href="/"> Add student</a></li>
       </ul>
     </div>
   </nav>
@@ -36,6 +35,99 @@
         <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
         <li><a href="/"> Add student</a></li>
   </ul>
+{{/if}}
+
+{{#if isMortal}}
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {{!-- este es el nav responsive --}}
+
+  <ul class="sidenav right" id="mobile-demo">
+    <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+        <li><a href="/"> Add student</a></li>
+  </ul>
+{{/if}}
+
+{{#if isTeacher}}
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Crear evento</a></li>
+        <li><a href="/">Mis eventos</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {{!-- este es el nav responsive --}}
+
+  <ul class="sidenav right" id="mobile-demo">
+    <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Crear evento</a></li>
+        <li><a href="/">Mis eventos</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+        <li><a href="/"> Add student</a></li>
+  </ul>
+{{/if}}
+
+{{#if isGod}}
+   <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo right"><img class="responsive-img" id="logo" src="../images/logo menu.png"/></a>
+      <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/{{user.role}}/profile">Profile</a></li>
+        <li><a href="/">Crear evento</a></li>
+        <li><a href="/">Mis eventos</a></li>
+         <li><a href="/">Agregar Usuarios</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  {{!-- este es el nav responsive --}}
+
+  <ul class="sidenav right" id="mobile-demo">
+    <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/">About us</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Crear evento</a></li>
+        <li><a href="/">Mis eventos</a></li>
+         <li><a href="/">Agregar Usuarios</a></li>
+        <li><a href="/logout"> Log Out</a></li>
+        <li><a href="/"> Notificaciones <span class="new badge blue lighten-2">4</span></a></li>
+        <li><a href="/"> Add student</a></li>
+  </ul>
+{{/if}}
+  
 
  {{{body}}}
 

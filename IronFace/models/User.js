@@ -1,9 +1,7 @@
-  
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { model, Schema } = require("mongoose");
+const PLM = require("passport-local-mongoose");
 
-
-const UserSchema = Schema({
+const userSchema = Schema({
   email: {
     type: String,
     required: true,
@@ -12,7 +10,6 @@ const UserSchema = Schema({
     unique: true
   },
 
-  password: String,
 
   username:{
     type: String,
@@ -52,13 +49,14 @@ const UserSchema = Schema({
 
   role: {
     type: String,
-    enum: ["Alumn","Teacher Assistant","Lead Teacher","Staff", "Iron Buddy"],
-    default:"Alumn"
+    enum: ["Student","Teacher Assistant","Lead Teacher","Staff", "Iron Buddy"],
+    default:"Student"
   },
 
-  image: {
+  photoURL: {
     type: String,
-    //default:
+    // default:
+      // "https://microhealth.com/assets/images/illustrations/personal-user-illustration-@2x.png"
   },
 
   post:[
@@ -67,11 +65,11 @@ const UserSchema = Schema({
       ref: "Post"
     }
   ],
+
 });
 
 
 
-const User = mongoose.model("User", UserSchema);
+userSchema.plugin(PLM, { usernameField: "email" });
 
-module.exports = User;
-
+module.exports = model("User", userSchema);

@@ -2,7 +2,13 @@ body {
   padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #ffffff;
-  margin: 0%; }
+  margin: 0%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+p {
+  color: #494949; }
 
 a {
   color: #00B7FF; }
@@ -24,8 +30,22 @@ a {
   margin-left: 15px;
   margin-top: 5px; }
 
+nav .sidenav-trigger {
+  float: right;
+  position: relative;
+  z-index: 1;
+  height: 56px;
+  margin: 0 18px; }
+
 header, main, footer {
   padding-left: 300px; }
+
+main {
+  flex: 1 0 auto; }
+
+footer {
+  background-color: #ffffff;
+  color: #494949; }
 
 @media only screen and (max-width: 992px) {
   header, main, footer {
