@@ -2,15 +2,15 @@ exports.whichRole = (req, res, next) => {
   if (req.isAuthenticated()) {
     if (
       req.user.role === "Student" || 
-      req.user.role === "Iron Buddy"  
+      req.user.role === "IronBuddy"  
     
     ) {
       req.app.locals.isMortal = true;
       req.app.locals.isNo = false;
     } 
     else if (
-      req.user.role === "Teacher Assistant"||
-      req.user.role === "Lead Teacher"
+      req.user.role === "TeacherAssistant"||
+      req.user.role === "LeadTeacher"
       
       ) {
         req.app.locals.isTeacher = true;

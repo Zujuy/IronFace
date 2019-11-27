@@ -49,7 +49,7 @@ const userSchema = Schema({
 
   role: {
     type: String,
-    enum: ["Student","Teacher Assistant","Lead Teacher","Staff", "Iron Buddy"],
+    enum: ["Student","TeacherAssistant","LeadTeacher","Staff", "IronBuddy"],
     default:"Student"
   },
 
