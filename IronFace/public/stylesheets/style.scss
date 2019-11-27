@@ -45,17 +45,12 @@ nav .sidenav-trigger {
   margin: 0 18px;
 }
 
-header, main, footer {
+header, main{
   padding-left: 300px;
 }
 
 main {
   flex: 1 0 auto;
-}
-
-footer{
-  background-color: #ffffff;
-  color: #494949;
 }
 
 @media only screen and (max-width : 992px) {

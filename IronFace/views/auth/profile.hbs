@@ -1,9 +1,54 @@
 <div class="container">
 
-<h1>{{user.username}}</h1>
-<h1>{{user.lastName}}</h1>
-<p>{{user.role}}</p>
-<h2>Mis posts</h2>
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="../images/Staff hombre.png" alt="" class="polygon responsive-img">
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                <h3>{{user.username}} {{user.lastName}}</h3>
+                <h4>{{user.role}}</h4>
+                <p>e-mail:{{user.email}}</p>
+                <p>Gender:{{user.genre}}</p>
+                <p>Birthday:{{user.birthdate}}</p>
+                <p>Bootcamp:{{user.bootCamp}}</p>
+                <p>Course mode:{{user.courseMode}}</p>
+
+                <!-- Modal Trigger -->
+                  <a class="waves-effect blue lighten-2 btn modal-trigger" href="#modal"><i class="material-icons left">create</i>Edit profile pic</a>
+
+                  <!-- Modal Structure -->
+                  <div id="modal" class="modal">
+                    <div class="modal-content">
+                      <h4>Edit profile pic</h4>
+                      <div class="form-group">
+                            <div class="custom-file">
+                              <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
+                              <label class="custom-file-label" for="validatedCustomFile">
+                                <span>Choose file...</span>
+                              </label>
+                            </div>
+                          <label for="post">Edit profile picture</label>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Upload</a>
+                      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Cancel</a>
+                    </div>
+                  </div>
+                </div>
+                {{!-- edit profile --}}
+                 <a class="waves-effect blue lighten-2 btn modal-trigger" href="/edit"><i class="material-icons left">create</i>Edit profile</a>
+
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<h2>My posts</h2>
 
 {{!-- boton para crear post  --}}
  
@@ -14,10 +59,7 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Add your post</h4>
-
-      <form action="/staff/post" method="POST" enctype="multipart/form-data">
-
-      <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="content">
+      <input placeholder="Placeholder" id="post" type="text" class="validate">
       <div class="form-group">
             <div class="custom-file">
 
@@ -40,30 +82,4 @@
     </form>
   </div>
 
-
-{{!-- boton para editar perfil --}}
-  {{!-- <!-- Modal Trigger -->
-  <a class="waves-effect blue lighten-2 btn modal-trigger" href="#modal1"><i class="material-icons left">create</i>Edit profile</a>
-
-  <!-- Modal Structure -->
-  <div id="modal2" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Edit</a>
-      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
-    </div>
-  </div> --}}
-
 </div>
-
-{{#each post}}
-  <article class="post">
-    <img src="{{this.picPath}}" alt="img" class="post-image">
-    <p>{{this.content}}</p>
-  </article>
-  {{/each}}
-
-
