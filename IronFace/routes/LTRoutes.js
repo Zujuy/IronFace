@@ -3,7 +3,7 @@ const {
 
   postPost,
 
-} = require("../controllers/staff.controllers");
+} = require("../controllers/LT.controllers");
 
 
 const { profileGet, profilePost } = require("../controllers/auth.controllers");

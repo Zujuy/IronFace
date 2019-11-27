@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Post = require("../models/Post");
 const passport = require("passport");
 
 
@@ -89,8 +90,11 @@ exports.feedsGet = async (req, res) => {
     path: "favors",
     options: { sort: { createdAt: -1 } }
   });
-  res.render("auth/feeds.hbs", { user });
+  const post = await Post.find()
+  res.render("auth/feeds.hbs", { user, post });
 };
+
+
 
 // exports.feedsPost = async (req, res, next) => {
 //   let userUpdated;
@@ -120,8 +124,14 @@ exports.profileGet = async (req, res) => {
     path: "post",
     options: { sort: { createdAt: -1 } }
   });
-  res.render("auth/profile", { user });
+  const post = await Post.find({ creatorId: _id })
+
+  res.render("auth/profile", { user, post });
 };
+
+
+
+
 
 exports.profilePost = async (req, res, next) => {
   let userUpdated;
