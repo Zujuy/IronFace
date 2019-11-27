@@ -11,8 +11,9 @@ const postSchema = Schema({
     type:Schema.Types.ObjectId,
     ref:'Comment'
   }],
+
   picPath: String,
-  picName: String,
+  // picName: String,
 
   point: {
     type: {

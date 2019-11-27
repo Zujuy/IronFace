@@ -14,9 +14,14 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Add your post</h4>
-      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+
+      <form action="/staff/post" method="POST" enctype="multipart/form-data">
+
+      <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="content">
       <div class="form-group">
             <div class="custom-file">
+
+
               <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
               <label class="custom-file-label" for="validatedCustomFile">
                 <span>Choose file...</span>
@@ -25,9 +30,14 @@
           <label for="post">write your post</label>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">add</a>
+
+
+         <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">Submit
+      <a type="submit" class=>add</a>
+  </button>
       <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
     </div>
+    </form>
   </div>
 
 
@@ -48,3 +58,12 @@
   </div> --}}
 
 </div>
+
+{{#each post}}
+  <article class="post">
+    <img src="{{this.picPath}}" alt="img" class="post-image">
+    <p>{{this.content}}</p>
+  </article>
+  {{/each}}
+
+
