@@ -117,26 +117,26 @@ exports.feedsGet = async (req, res) => {
 exports.profileGet = async (req, res) => {
   const { _id } = req.user;
   const user = await User.findById(_id).populate({
-    path: "favors",
+    path: "post",
     options: { sort: { createdAt: -1 } }
   });
-  res.render("auth/feeds", { user });
+  res.render("auth/profile", { user });
 };
 
 exports.profilePost = async (req, res, next) => {
   let userUpdated;
   const { _id } = req.user;
-  const { username, telephone_number } = req.body;
+  const { username, lastName, genre, birthdate, wFrom, bootCamp, courseMode, photoURL } = req.body;
   if (req.file) {
     userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: { username, telephone_number, photoURL: req.file.secure_url }
+      $set: {username, lastName, genre, birthdate, wFrom, bootCamp, courseMode, photoURL: req.file.secure_url }
     });
   } else {
     userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: { username, telephone_number }
+      $set: {username, lastName, genre, birthdate, wFrom, bootCamp, courseMode}
     });
   }
   req.user = userUpdated;
-  res.redirect(`/${userUpdated.username.toLowerCase()}/feeds`);
+  res.redirect(`/${userUpdated.role.toLowerCase()}/profile`);
 };
 

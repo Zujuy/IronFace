@@ -53,9 +53,10 @@ const userSchema = Schema({
     default:"Student"
   },
 
-  image: {
+  photoURL: {
     type: String,
-    //default:
+    // default:
+      // "https://microhealth.com/assets/images/illustrations/personal-user-illustration-@2x.png"
   },
 
   post:[

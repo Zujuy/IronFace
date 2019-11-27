@@ -63,10 +63,15 @@ app.locals.title = "IronFace";
 const index = require("./routes/index");
 const authRoutes = require("./routes/authentication");
 const feedsRouetes = require("./routes/feedsRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+const staffRoutes = require("./routes/staffRoutes");
 
 app.use("/", whichRole, index);
 app.use("/", authRoutes);
  app.use("/ironhacker", isAuth, feedsRouetes);
+
+//  app.use("/student", isAuth, studentRoutes);
+ app.use("/staff", isAuth, staffRoutes);
 
 module.exports = app;
 
