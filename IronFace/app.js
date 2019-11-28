@@ -71,10 +71,12 @@ const IBRoutes = require("./routes/IBRoutes");
 app.use("/", whichRole, index);
 app.use("/", authRoutes);
 app.use("/Student", isAuth, studentRoutes);
-app.use("/Staff", isAuth, staffRoutes);
+app.use("/Staff", staffRoutes); //Poner middleware 
 app.use("/TeacherAssistant", isAuth, TARoutes);
 app.use("/LeadTeacher", isAuth, LTRoutes);
 app.use("/IronBuddy", isAuth, IBRoutes);
+
+// Cambiar rutas a minusculas cuando tengan tiempo
  
 module.exports = app;
 

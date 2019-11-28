@@ -2,8 +2,18 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
+exports.commentsGet = async (req, res) => {
+  console.log(req.params)
+  const comments = await Post.findById(req.params.id).populate({
+    path: "comments",
+    options: { sort: { createdAt: 1 } }
+  })
+  res.render("auth/feeds", {comments}) // cambiar la ruta con 
+}
+
 exports.feedsGet = async (req, res) => {
   const { _id } = req.user;
+  console.log(req.body)
   const user = await User.findById(_id).populate({
     path: "favors",
     options: { sort: { createdAt: 1 } }
@@ -12,11 +22,7 @@ exports.feedsGet = async (req, res) => {
     path: "favors",
     options: { sort: { createdAt: 1 } }
   })
-  const comment = await Comment.find().populate({
-    path: "favors",
-    options: { sort: { createdAt: 1 } }
-  })
-  res.render("auth/feeds.hbs", { user, post, comment });
+  res.render("auth/feeds", {user, post});
 };
 
 exports.postPost = async (req, res, next) => {
@@ -102,7 +108,7 @@ exports.editUserGet = async (req, res) => {
     path: "favors",
     options: { sort: { createdAt: 1 } }
   });
-  res.render("auth/edit.hbs", { user });
+  res.render("auth/edit", { user });
 };
 
 

@@ -38,7 +38,6 @@
 
 
 
-     <input name="idPost" placeholder="Placeholder" id="oculto" type="text" value={{this._id}}>
   
             <div class="card-stacked">
                 <div class="card-content">
@@ -74,14 +73,18 @@
                        </div> 
 
                       <!-- Modal ver comentarios -->
-                       <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">See comments</a>
+                    <form action="/Staff/comments/{{this._id}}" method="GET">
+                        {{!-- <input name="idPost" placeholder="Placeholder" id="oculto" type="text" value={{this._id}}> --}}
+                        <button type='submit' class="waves-effect  blue lighten-2 btn modal-trigger">See comments</button>
+                    </form>
 
                         <!-- Modal Structure -->
                        <div id="modal2" class="modal">
                         <div class="modal-content">
                         <h4>Comments</h4>
 
-                             {{#each comment}}
+                                {{!-- agregarIF --}}
+                             {{#each comments.comments }}
                             <ul class="collection">
                             <li class="collection-item avatar">
                             <img src="../images/profile pic.jpg" alt="" class="circle">
@@ -90,6 +93,8 @@
                             </li>
                             </ul>
                             {{/each}}
+
+
                             {{!-- <ul class="collection">
                             <li class="collection-item avatar">
                             <img src="../images/profile pic.jpg" alt="" class="circle">
