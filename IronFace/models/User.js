@@ -66,6 +66,13 @@ const userSchema = Schema({
     }
   ],
 
+  comments:[
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    }
+  ],
+
 });
 
 

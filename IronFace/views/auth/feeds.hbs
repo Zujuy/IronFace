@@ -26,61 +26,96 @@
             </nav>
       </div>
     
-
       <div class="col s9">
+
+            {{#each post}}
         <div>
             <div class="card horizontal hoverable">
             <div class="card-image">
                 <img src="../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
             </div>
+
+
+
+
+     <input name="idPost" placeholder="Placeholder" id="oculto" type="text" value={{this._id}}>
+  
             <div class="card-stacked">
                 <div class="card-content">
-                <h5 class="header blue-text text-blue lighten-2">{{user.username}} {{user.lastName}}</h5>
-                <h5 class="grey-text">El viernes hay Iron chelas!!!!!!.</h5>
-                </div>
-                <!-- Modal comentar -->
+                 <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}</h5>
+                 <h5 class="grey-text">{{this.content}}</h5>
+                 </div>
+                    <!-- Modal comentar -->
                     <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
 
                     <!-- Modal Structure -->
+                    
                     <div id="modal1" class="modal">
+                     <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
+
                         <div class="modal-content">
-                        <h4>Comment</h4>
-                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                          <h4>Comment</h4>
+
+
+
+                            <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
+
                             <label for="first_name">your comment</label>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">comment</a>
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
-                        </div>
-                    </div> 
+                         </div>
+                            <div class="modal-footer">
 
-                <!-- Modal ver comentarios -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">See comments</a>
+                                          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit">
+                                             <a  >Comment</a>
+                                            </button>
 
-                    <!-- Modal Structure -->
-                    <div id="modal2" class="modal">
+                                    <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+                                  </div>
+                     </form>
+                       </div> 
+
+                      <!-- Modal ver comentarios -->
+                       <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">See comments</a>
+
+                        <!-- Modal Structure -->
+                       <div id="modal2" class="modal">
                         <div class="modal-content">
                         <h4>Comments</h4>
+
+                             {{#each comment}}
                             <ul class="collection">
                             <li class="collection-item avatar">
                             <img src="../images/profile pic.jpg" alt="" class="circle">
-                            <p>este deberia ser el primer comentario</p>
+                            <h5>{{this.comments.authorName}}</h5>
+                            <p>{{this.comments.authorName}}</p>
                             </li>
                             </ul>
-                            <ul class="collection">
+                            {{/each}}
+                            {{!-- <ul class="collection">
                             <li class="collection-item avatar">
                             <img src="../images/profile pic.jpg" alt="" class="circle">
                             <p>este deberia ser el segundo comentario</p>
                             </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                         <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">back</a>
+                        <a  class="modal-close waves-effect  blue lighten-2 btn-flat">back</a>
                         </div>
                     </div>   
             </div>
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
+              {{/each}}
 
     </div>
 </div>

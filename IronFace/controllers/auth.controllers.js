@@ -2,10 +2,6 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const passport = require("passport");
 
-
-
-
-
 //SignUp
 exports.signupGet = (req, res) => {
   const templateConfig = {
@@ -17,9 +13,29 @@ exports.signupGet = (req, res) => {
 };
 
 exports.signupPost = async (req, res, next) => {
-  const { username, email, password, lastName, genre, birthdate, wFrom, bootCamp, courseMode, role } = req.body;
-  const userCreated = await User.register(
-    { username, email, lastName, genre, birthdate, wFrom, bootCamp, courseMode, role  },
+  const {
+    username,
+    email,
+    password,
+    lastName,
+    genre,
+    birthdate,
+    wFrom,
+    bootCamp,
+    courseMode,
+    role
+  } = req.body;
+  const userCreated = await User.register({
+      username,
+      email,
+      lastName,
+      genre,
+      birthdate,
+      wFrom,
+      bootCamp,
+      courseMode,
+      role
+    },
     password
   ).catch(err => {
     const templateConfig = {
@@ -38,7 +54,7 @@ exports.signupPost = async (req, res, next) => {
       console.log("hayerror")
       if (err) return next(err);
       req.user = user;
-      return res.redirect(`/ironhacker/feeds`);
+      return res.redirect(`/${user.role}/feeds`);
     });
   })(req, res, next);
 };
@@ -69,7 +85,7 @@ exports.loginPost = (req, res, next) => {
     req.logIn(user, err => {
       if (err) return next(err);
       req.user = user;
-      return res.redirect(`/ironhacker/feeds`);
+      return res.redirect(`/${user.role}/feeds`);
     });
   })(req, res, next);
 };
@@ -82,71 +98,29 @@ exports.logOut = (req, res, next) => {
 };
 
 
-
-//feed
-exports.feedsGet = async (req, res) => {
-  const { _id } = req.user;
-  const user = await User.findById(_id).populate({
-    path: "favors",
-    options: { sort: { createdAt: -1 } }
-  });
-  const post = await Post.find()
-  res.render("auth/feeds.hbs", { user, post });
-};
-
-
-
-// exports.feedsPost = async (req, res, next) => {
-//   let userUpdated;
-//   const { _id } = req.user;
-//   const { username, telephone_number } = req.body;
-//   if (req.file) {
-//     userUpdated = await User.findByIdAndUpdate(_id, {
-//       $set: { username, telephone_number, photoURL: req.file.secure_url }
-//     });
-//   } else {
-//     userUpdated = await User.findByIdAndUpdate(_id, {
-//       $set: { username, telephone_number }
-//     });
-//   }
-//   req.user = userUpdated;
-//   res.redirect(`/${userUpdated.username.toLowerCase()}/feeds`);
-// };
-
-
-
-
-
-
 exports.profileGet = async (req, res) => {
-  const { _id } = req.user;
+  const {
+    _id
+  } = req.user;
   const user = await User.findById(_id).populate({
     path: "post",
-    options: { sort: { createdAt: -1 } }
+    options: {
+      sort: {
+        createdAt: -1
+      }
+    }
   });
-  const post = await Post.find({ creatorId: _id })
+  const post = await Post.find({
+    creatorId: _id
+  })
 
-  res.render("auth/profile", { user, post });
+  res.render("auth/profile", {
+    user,
+    post
+  });
 };
 
 
 
 
-
-exports.profilePost = async (req, res, next) => {
-  let userUpdated;
-  const { _id } = req.user;
-  const { username, lastName, genre, birthdate, wFrom, bootCamp, courseMode, photoURL } = req.body;
-  if (req.file) {
-    userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {username, lastName, genre, birthdate, wFrom, bootCamp, courseMode, photoURL: req.file.secure_url }
-    });
-  } else {
-    userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {username, lastName, genre, birthdate, wFrom, bootCamp, courseMode}
-    });
-  }
-  req.user = userUpdated;
-  res.redirect(`/${userUpdated.role.toLowerCase()}/profile`);
-};
 
