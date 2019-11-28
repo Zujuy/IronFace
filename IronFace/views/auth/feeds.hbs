@@ -32,16 +32,13 @@
         <div>
             <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
+                <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
-
-
-
 
   
             <div class="card-stacked">
                 <div class="card-content">
-                 <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}</h5>
+                 <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}<p>{{this.authorRole}}</p></h5>
                  <h5 class="grey-text">{{this.content}}</h5>
                  </div>
                     <!-- Modal comentar -->

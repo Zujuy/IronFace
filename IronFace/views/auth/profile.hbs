@@ -4,7 +4,7 @@
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
             <div class="col s2">
-              <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" class="polygon responsive-img">
+              <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img">
             </div>
             <div class="col s10">
               <span>
@@ -96,11 +96,11 @@
     </form>
   </div>
 </div>
-
+</div>
 <div class= posts>
   <div class="card horizontal hoverable">
     <div class="card-image">
-    <img src=""> <!-- imagen de perfil de usuario -->
+    <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
     </div>
     <div class="card-stacked">
       <div class="card-content">

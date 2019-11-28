@@ -23,6 +23,11 @@ const postSchema = Schema({
     ref:'Comment'
   }],
 
+  authorRole:{
+    type:String,
+    ref:'User'
+  },
+
   picPath: String,
  
   notification: {
@@ -30,6 +35,8 @@ const postSchema = Schema({
     required: true,
     default: true
   },
+
+
 
 });
 
