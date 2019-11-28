@@ -8,16 +8,23 @@ const postSchema = Schema({
     ref:'User'
   },
 
+  authorName:{
+    type:String,
+    ref:'User'
+  },
+
+  authorlastName:{
+    type:String,
+    ref:'User'
+  },
+
   comments:[{
     type:Schema.Types.ObjectId,
     ref:'Comment'
   }],
 
   picPath: String,
-  // picName: String,
-
-
-
+ 
   notification: {
     type: Boolean,
     required: true,

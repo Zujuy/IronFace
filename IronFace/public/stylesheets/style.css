@@ -7,6 +7,9 @@ body {
   min-height: 100vh;
   flex-direction: column; }
 
+#oculto {
+  display: none; }
+
 p {
   color: #494949; }
 

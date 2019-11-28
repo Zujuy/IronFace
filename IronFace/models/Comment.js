@@ -9,6 +9,16 @@ const commentSchema = Schema({
     type:Schema.Types.ObjectId,
     ref:'User'
   },
+
+  authorName:{
+    type:String,
+    ref:'User'
+  },
+  
+  authorlastName:{
+    type:String,
+    ref:'User'
+  },
   
   imagePath: String,
 
