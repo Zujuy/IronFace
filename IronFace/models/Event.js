@@ -2,14 +2,27 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const eventSchema = Schema({
+  eventName:String,
+
   content: String,
+
+  date:String,
+
   creatorId:{
     type:Schema.Types.ObjectId,
     ref:'User'
   },
 
-  picPath: String,
-  picName: String,
+  creatorName:{
+    type:String,
+    ref:'User'
+  },
+
+  creatorlastName:{
+    type:String,
+    ref:'User'
+  },
+
 
   point: {
     type: {
@@ -28,16 +41,8 @@ const eventSchema = Schema({
 timeStart:{
  type:String
 },
+place:String
 
-timeEnd:{
-  type:String
- },
-
-  
- timestamps: {
-  createdAt: "created_at",
-  updatedAt: "updated_at"
-}
 });
 
 const Event = mongoose.model('Event', eventSchema);

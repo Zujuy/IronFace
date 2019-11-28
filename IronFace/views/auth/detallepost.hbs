@@ -30,12 +30,12 @@
       <div class="col s9">
         <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
+                <img src="../../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                <h5 class="header blue-text text-blue lighten-2">{{user.username}} {{user.lastName}}</h5>
-                <h5 class="grey-text">El viernes hay Iron chelas!!!!!!.</h5>
+                <h5 class="header blue-text text-blue lighten-2">{{post.authorName}} {{post.authorlastName}} </h5>
+                <h5 class="grey-text">{{post.content}}</h5>
                 </div>
             </div>
         </div>
@@ -48,18 +48,25 @@
 
 
 <h4>Comments</h4>
+
+    {{#each post.comments}}
     <ul class="collection">
     <li class="collection-item avatar">
-    <img src="../images/profile pic.jpg" alt="" class="circle">
-    <p>este deberia ser el primer comentario</p>
+    <img src="../../images/profile pic.jpg" alt="" class="circle">
+    <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}} </h5>
+    <p>{{this.content}}</p>
     </li>
     </ul>
-    <ul class="collection">
+    {{/each}} 
+
+
+
+    {{!-- <ul class="collection">
     <li class="collection-item avatar">
     <img src="../images/profile pic.jpg" alt="" class="circle">
     <p>este deberia ser el segundo comentario</p>
     </li>
-    </ul>
+    </ul> --}}
 
 
 </div>

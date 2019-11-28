@@ -3,29 +3,29 @@
 
 
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" method="POST" >
       <div class="row">
         <div class="input-field col s6">
-          <input id="event-name" type="text" class="validate">
+          <input id="event-name" type="text" class="validate" name="eventName">
           <label for="event-name">Name of the event</label>
         </div>
         <div class="input-field col s6">
-          <input id="event-description" type="text" class="validate">
+          <input id="event-description" type="text" class="validate" name="content">
           <label for="event-description">Description of the event</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-          <input type="text" class="datepicker">
+          <input type="text" class="datepicker" name="date">
           <label for="datepicker">Date</label>
         </div>
         <div class="input-field col s6">
-          <input type="text" class="timepicker">
+          <input type="text" class="timepicker" name="timeStart">
           <label for="timepicker">Time of the event</label>
         </div>
       </div>
       <div class="input-field col s6">
-        <input type="text" class="eventplace">
+        <input type="text" class="eventplace" name="place">
         <label for="eventplace">Place of the event</label>
         <div id='map'></div>
       </div>

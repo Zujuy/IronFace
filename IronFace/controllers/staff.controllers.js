@@ -1,25 +1,39 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const Event = require("../models/Event");
 
 exports.commentsGet = async (req, res) => {
-  console.log(req.params)
-  const comments = await Post.findById(req.params.id).populate({
+  // console.log(req.params)
+  const { id } = req.params;
+
+  // const user = await User.findById().populate({
+  //   path: "users",
+  //   options: { sort: { createdAt: 1 } }
+  // });
+
+
+  const post = await Post.findById(id).populate({
+    path: "users",
+    options: { sort: { createdAt: 1 } }
+  })
+  .populate({
     path: "comments",
     options: { sort: { createdAt: 1 } }
   })
-  res.render("auth/feeds", {comments}) // cambiar la ruta con 
+
+
+  res.render("auth/detallepost", {user: req.user, post }) // cambiar la ruta con 
 }
 
 exports.feedsGet = async (req, res) => {
   const { _id } = req.user;
-  console.log(req.body)
   const user = await User.findById(_id).populate({
-    path: "favors",
+    path: "users",
     options: { sort: { createdAt: 1 } }
   });
   const post = await Post.find().populate({
-    path: "favors",
+    path: "post",
     options: { sort: { createdAt: 1 } }
   })
   res.render("auth/feeds", {user, post});
@@ -169,46 +183,41 @@ exports.eventGet = async (req, res) => {
 };
 
 exports.eventPost = async (req, res, next) => {
-  // const { _id, username, lastName } = req.user;  
-  // let createComment;
-  // const {content} = req.body;
-  // const idPost = req.body.idPost
+  const { _id, username, lastName } = req.user;
+  const {
+    lng,
+    lat,
+    eventName,
+    content,
+    date,
+    timeStart,
+    place,
+    point: placeAddress,
+  } = req.body;
 
-  // if (req.file) {
-  //   createComment =  {
-  //     creatorId:_id,
-  //     authorName:username,
-  //     authorlastName:lastName,
-  //     postId:idPost,
-  //     content,
-  //     picPath: req.file.secure_url,
-  //   }
-  // }else {
-  //   createComment ={
-  //     content,
-  //     creatorId:_id,
-  //     authorName:username,
-  //     authorlastName:lastName,
-  //     postId:idPost 
-  //   } 
-  //   }
+  const event = {
+     creatorId: _id,
+     creatorName:username,
+     creatorlastName:lastName,
+      point: {
+      address: placeAddress,
+      coordinates: [lng, lat]
+    },
+      eventName,
+      content,
+      date,
+      timeStart
+  };
 
-  // const commentCreated = await Comment.create(createComment);
-  // const userUpdated = await User.findByIdAndUpdate(
-  //   _id,
-  //   { $push: { comments: commentCreated._id } },
-  //   { new: true }
-  // );
+  const eventCreated = await Event.create(event);
+  const userUpdated = await User.findByIdAndUpdate(
+    _id,
+    { $push: { events: eventCreated._id } },
+    { new: true }
+  );
 
-  // const postUpdated = await Post.findOneAndUpdate(
-  //   idPost ,
-  //   { $push: { comments: commentCreated._id } },
-  //   { new: true }
-  // );
-
-  // req.user = userUpdated;
-  // req.post= postUpdated;
-  // res.redirect(`feeds`);
+  req.user = userUpdated;
+  res.redirect("profile");
 };
 
 
