@@ -17,5 +17,4 @@ router.post("/comment", upload.single("photoURL"), commentPost);
 router.get("/edit", editUserGet);
 router.post("/edit", upload.single("photoURL"), editUserPost);
 
-
 module.exports = router;

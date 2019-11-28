@@ -5,7 +5,7 @@
       <div class="col s3" >
           <h5 class="center-align blue-text text-blue lighten-2">Events</h5>
             <div class="collection">
-                <a href="#!" class="collection-item grey-text">Crear eventos</a>
+                <a href="/{{user.role}}/event" class="collection-item grey-text">Crear eventos</a>
                 <a href="#!" class="collection-item grey-text">Eventos</a>
             </div>
             <h5 class="center-align blue-text text-blue lighten-2">Adds</h5>
@@ -72,52 +72,11 @@
                      </form>
                        </div> 
 
-                      <!-- Modal ver comentarios -->
-                    <form action="/Staff/comments/{{this._id}}" method="GET">
+                    
                         {{!-- <input name="idPost" placeholder="Placeholder" id="oculto" type="text" value={{this._id}}> --}}
-                        <button type='submit' class="waves-effect  blue lighten-2 btn modal-trigger">See comments</button>
+                        <button type='submit' action="/{{../user.role}}/comment" class="waves-effect  blue lighten-2 btn modal-trigger">See comments</button>
                     </form>
-
-                        <!-- Modal Structure -->
-                       <div id="modal2" class="modal">
-                        <div class="modal-content">
-                        <h4>Comments</h4>
-
-                                {{!-- agregarIF --}}
-                             {{#each comments.comments }}
-                            <ul class="collection">
-                            <li class="collection-item avatar">
-                            <img src="../images/profile pic.jpg" alt="" class="circle">
-                            <h5>{{this.comments.authorName}}</h5>
-                            <p>{{this.comments.authorName}}</p>
-                            </li>
-                            </ul>
-                            {{/each}}
-
-
-                            {{!-- <ul class="collection">
-                            <li class="collection-item avatar">
-                            <img src="../images/profile pic.jpg" alt="" class="circle">
-                            <p>este deberia ser el segundo comentario</p>
-                            </li>
-                            </ul> --}}
-                        </div>
-                        <div class="modal-footer">
-                        <a  class="modal-close waves-effect  blue lighten-2 btn-flat">back</a>
-                        </div>
-                    </div>   
             </div>
-
-
-
-
-
-
-
-
-
-
-
         </div>
       </div>
               {{/each}}

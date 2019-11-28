@@ -165,7 +165,7 @@ exports.eventGet = async (req, res) => {
     path: "favors",
     options: { sort: { createdAt: 1 } }
   });
-  res.render("auth/edit.hbs", { user });
+  res.render("auth/crearevento", { user });
 };
 
 exports.eventPost = async (req, res, next) => {

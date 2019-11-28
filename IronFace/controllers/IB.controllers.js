@@ -40,7 +40,7 @@ exports.postPost = async (req, res, next) => {
       content
     } 
     }
-
+// este es el controler de update pic
   const postCreated = await Post.create(createPost);
   const userUpdated = await User.findByIdAndUpdate(
     _id,
@@ -52,90 +52,3 @@ exports.postPost = async (req, res, next) => {
   res.redirect(`profile`);
 };
 
-exports.commentPost = async (req, res, next) => {
-  const { _id, username, lastName } = req.user;  
-  let createComment;
-  const {content} = req.body;
-  const idPost = req.body.idPost
-
-  if (req.file) {
-    createComment =  {
-      creatorId:_id,
-      authorName:username,
-      authorlastName:lastName,
-      postId:idPost,
-      content,
-      picPath: req.file.secure_url,
-    }
-  }else {
-    createComment ={
-      content,
-      creatorId:_id,
-      authorName:username,
-      authorlastName:lastName,
-      postId:idPost 
-    } 
-    }
-
-  const commentCreated = await Comment.create(createComment);
-  const userUpdated = await User.findByIdAndUpdate(
-    _id,
-    { $push: { comments: commentCreated._id } },
-    { new: true }
-  );
-
-  const postUpdated = await Post.findOneAndUpdate(
-    idPost ,
-    { $push: { comments: commentCreated._id } },
-    { new: true }
-  );
-
-  req.user = userUpdated;
-  req.post= postUpdated;
-  res.redirect(`feeds`);
-};
-
-
-exports.editUserGet = async (req, res) => {
-  const { _id } = req.user;
-  const user = await User.findById(_id).populate({
-    path: "favors",
-    options: { sort: { createdAt: 1 } }
-  });
-  res.render("auth/edit.hbs", { user });
-};
-
-
-exports.editUserPost = async (req, res) => {
-  let userUpdated;
-  const { _id} = req.user;
-  const {username,lastName,genre,birthdate,wFrom,bootCamp,courseMode} = req.body;
-  if (req.file) {
-    userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {
-        username,
-        lastName,
-        genre,
-        birthdate,
-        wFrom,
-        bootCamp,
-        courseMode,
-        photoURL: req.file.secure_url
-      }
-    });
-  } else {
-    userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {
-        username,
-        lastName,
-        genre,
-        birthdate,
-        wFrom,
-        bootCamp,
-        courseMode
-      }
-    });
-  }
-  req.user = userUpdated;
-  res.redirect(`/profile`);
-};

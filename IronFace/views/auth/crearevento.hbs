@@ -1,0 +1,49 @@
+<div class="container">
+<h2>Create an event</h2>
+
+<div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="event_title" type="text" class="validate">
+          <label for="event_title"></label>
+        </div>
+        <div class="input-field col s6">
+          <input id="event-description" type="text" class="validate">
+          <label for="event-description">Description of the event</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" class="datepicker">
+          <label for="datepicker">Date</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" class="timepicker">
+          <label for="timepicker">Time of the event</label>
+        </div>
+      </div>
+    
+    </form>
+  </div>
+        
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZGl1cml2aiIsImEiOiJjanAxdjA2cTQwMGp1M2tvYzZmZGp3bWc3In0.4cZEyLkU2ikqx_wb4A1z8A';
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    zoom: 15
+  });
+  const directions = new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    controls: { profileSwitcher: false, inputs: false, unit: 'metric' }
+  })
+  map.addControl(directions, 'top-left');
+  directions.setOrigin([{{ starting_point.coordinates }}])
+  directions.setDestination([{{ ending_point.coordinates }}])
+  document.querySelector('button.btn-outline-danger').addEventListener('click', () => {
+    window.location.href = '/login'; //relative to domain
+  })
+</script>
+</div>
