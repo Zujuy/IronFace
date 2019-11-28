@@ -4,7 +4,7 @@
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
             <div class="col s2">
-              <img src="../images/Staff hombre.png" alt="" class="polygon responsive-img">
+              <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" class="polygon responsive-img">
             </div>
             <div class="col s10">
               <span>
@@ -95,7 +95,7 @@
 <div class= posts>
   <div class="card horizontal hoverable">
     <div class="card-image">
-    <img src="../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
+    <img src=""> <!-- imagen de perfil de usuario -->
     </div>
     <div class="card-stacked">
       <div class="card-content">
@@ -147,3 +147,10 @@
   </div>
 
 </div> {{!-- div final --}}
+
+<script>
+  document.querySelector('input[name="photoURL"]').addEventListener('change', (e) => {
+    document.querySelector('custom-file-input span').innerText = e.target.files[0].name
+  })
+
+  </script>

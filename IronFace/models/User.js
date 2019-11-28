@@ -55,8 +55,8 @@ const userSchema = Schema({
 
   photoURL: {
     type: String,
-    // default:
-      // "https://microhealth.com/assets/images/illustrations/personal-user-illustration-@2x.png"
+    default:
+    "../images/alumno.png"
   },
 
   post:[
