@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container-event">
 <h2>Create an event</h2>
+
 
 <div class="row">
     <form class="col s12">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="event_title" type="text" class="validate">
-          <label for="event_title"></label>
+          <input id="event-name" type="text" class="validate">
+          <label for="event-name">Name of the event</label>
         </div>
         <div class="input-field col s6">
           <input id="event-description" type="text" class="validate">
@@ -14,7 +15,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
+        <div class="input-field col s6">
           <input type="text" class="datepicker">
           <label for="datepicker">Date</label>
         </div>
@@ -23,27 +24,67 @@
           <label for="timepicker">Time of the event</label>
         </div>
       </div>
-    
+      <div class="input-field col s6">
+        <input type="text" class="eventplace">
+        <label for="eventplace">Place of the event</label>
+        <div id='map'></div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="lng" type="text" name="location[coordinates][0]" hidden>
+        </div>
+        <div class="input-field col s6">
+          <input id="lat" type="text" name="location[coordinates][1]" hidden>
+        </div>
+        <div class="input-field col s6">
+          <input id="address" type="text" name="location[address]" hidden>
+        </div>
+      </div>
+
+    <div class="control">
+    <button class="button is-link  btn waves-effect blue lighten-2"type = 'submit'>Submit</button>
+  
+    </div>
+
     </form>
   </div>
         
 
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiZGl1cml2aiIsImEiOiJjanAxdjA2cTQwMGp1M2tvYzZmZGp3bWc3In0.4cZEyLkU2ikqx_wb4A1z8A';
+  const address = document.getElementById("address");
+  const lat = document.getElementById("lat");
+  const lng = document.getElementById("lng");
+  mapboxgl.accessToken = 'pk.eyJ1IjoienVqdXkiLCJhIjoiY2szNjI3MHBjMWQzeTNpbW1sZGY1cTVheiJ9.j76A6ZI9b60J3GAK8Lh0XA';
+  
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    zoom: 15
+    style: 'mapbox://styles/zujuy/ck3j1c8fn1gkv1dnsk41vjrnr',
+    zoom:15
   });
-  const directions = new MapboxDirections({
-    accessToken: mapboxgl.accessToken,
-    controls: { profileSwitcher: false, inputs: false, unit: 'metric' }
+  const geoCoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
   })
-  map.addControl(directions, 'top-left');
-  directions.setOrigin([{{ starting_point.coordinates }}])
-  directions.setDestination([{{ ending_point.coordinates }}])
-  document.querySelector('button.btn-outline-danger').addEventListener('click', () => {
-    window.location.href = '/login'; //relative to domain
+  map.addControl(geoCoder)
+
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const user_location = [
+        position.coords.longitude,
+        position.coords.latitude
+      ];
+      map.setCenter(user_location);
+    }, () => {
+      console.log('Error in the geolocation service.');
+    });
+  } else {
+    console.log('Browser does not support geolocation.');
+  }
+  geocoder.on("result", (e) => {
+    address.value = e.result.place_name;
+    lat.value = e.result.center[0];
+    lng.value = e.result.center[1];
   })
+  
 </script>
 </div>

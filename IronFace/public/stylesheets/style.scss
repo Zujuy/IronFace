@@ -55,6 +55,12 @@ main {
   flex: 1 0 auto;
 }
 
+#map {
+  width: 100%;
+  height: 50vh;
+  
+}  
+
 @media only screen and (max-width : 992px) {
   header, main, footer {
     padding-left: 0;
