@@ -100,14 +100,15 @@
   {{!-- este es el nav responsive --}}
 
   <ul class="sidenav right" id="mobile-demo">
-    <li><a href="/ironhacker/feeds">Feeds</a></li>
+        <li><a href="/ironhacker/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
-         <li><a href="/">Agregar Usuarios</a></li>
+        <li><a href="/">Agregar Usuarios</a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span></a><i class="material-icons right">notifications_active</i></li>
         <li><a href="/"> Add student</a></li>
         <li><a href="/logout"> Log Out</a></li>
   </ul>
 {{/if}}
+  
   
 
  {{{body}}}
@@ -146,7 +147,9 @@
     $('.scrollspy').scrollSpy();
   });
 
-
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
   </script>
 </body>
 
