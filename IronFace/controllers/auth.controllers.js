@@ -114,6 +114,8 @@ exports.profileGet = async (req, res) => {
     creatorId: _id
   })
 
+  console.log(user)
+
   res.render("auth/profile", {
     user,
     post

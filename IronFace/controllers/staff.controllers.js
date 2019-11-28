@@ -3,23 +3,36 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
 exports.commentsGet = async (req, res) => {
-  console.log(req.params)
-  const comments = await Post.findById(req.params.id).populate({
+  // console.log(req.params)
+  const { id } = req.params;
+
+  // const user = await User.findById().populate({
+  //   path: "users",
+  //   options: { sort: { createdAt: 1 } }
+  // });
+
+
+  const post = await Post.findById(id).populate({
+    path: "users",
+    options: { sort: { createdAt: 1 } }
+  })
+  .populate({
     path: "comments",
     options: { sort: { createdAt: 1 } }
   })
-  res.render("auth/feeds", {comments}) // cambiar la ruta con 
+
+
+  res.render("auth/detallepost", {user: req.user, post }) // cambiar la ruta con 
 }
 
 exports.feedsGet = async (req, res) => {
   const { _id } = req.user;
-  console.log(req.body)
   const user = await User.findById(_id).populate({
-    path: "favors",
+    path: "users",
     options: { sort: { createdAt: 1 } }
   });
   const post = await Post.find().populate({
-    path: "favors",
+    path: "post",
     options: { sort: { createdAt: 1 } }
   })
   res.render("auth/feeds", {user, post});

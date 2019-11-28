@@ -71,7 +71,7 @@ const IBRoutes = require("./routes/IBRoutes");
 app.use("/", whichRole, index);
 app.use("/", authRoutes);
 app.use("/Student", isAuth, studentRoutes);
-app.use("/Staff", staffRoutes); //Poner middleware 
+app.use("/Staff", isAuth, staffRoutes); //Poner middleware 
 app.use("/TeacherAssistant", isAuth, TARoutes);
 app.use("/LeadTeacher", isAuth, LTRoutes);
 app.use("/IronBuddy", isAuth, IBRoutes);
