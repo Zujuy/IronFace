@@ -23,6 +23,6 @@ router.get("/edit", editUserGet);
 router.post("/edit", upload.single("photoURL"), editUserPost);
 
 router.get("/event", eventGet);
-router.post("/event", upload.single("photoURL"), eventPost);
+router.post("/event", eventPost);
 
 module.exports = router;

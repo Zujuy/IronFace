@@ -76,6 +76,13 @@ const userSchema = Schema({
     }
   ],
 
+  events:[
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Event"
+    }
+  ],
+
 });
 
 

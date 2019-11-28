@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const Event = require("../models/Event");
 
 exports.commentsGet = async (req, res) => {
   // console.log(req.params)
@@ -182,46 +183,41 @@ exports.eventGet = async (req, res) => {
 };
 
 exports.eventPost = async (req, res, next) => {
-  // const { _id, username, lastName } = req.user;  
-  // let createComment;
-  // const {content} = req.body;
-  // const idPost = req.body.idPost
+  const { _id, username, lastName } = req.user;
+  const {
+    lng,
+    lat,
+    eventName,
+    content,
+    date,
+    timeStart,
+    place,
+    point: placeAddress,
+  } = req.body;
 
-  // if (req.file) {
-  //   createComment =  {
-  //     creatorId:_id,
-  //     authorName:username,
-  //     authorlastName:lastName,
-  //     postId:idPost,
-  //     content,
-  //     picPath: req.file.secure_url,
-  //   }
-  // }else {
-  //   createComment ={
-  //     content,
-  //     creatorId:_id,
-  //     authorName:username,
-  //     authorlastName:lastName,
-  //     postId:idPost 
-  //   } 
-  //   }
+  const event = {
+     creatorId: _id,
+     creatorName:username,
+     creatorlastName:lastName,
+      point: {
+      address: placeAddress,
+      coordinates: [lng, lat]
+    },
+      eventName,
+      content,
+      date,
+      timeStart
+  };
 
-  // const commentCreated = await Comment.create(createComment);
-  // const userUpdated = await User.findByIdAndUpdate(
-  //   _id,
-  //   { $push: { comments: commentCreated._id } },
-  //   { new: true }
-  // );
+  const eventCreated = await Event.create(event);
+  const userUpdated = await User.findByIdAndUpdate(
+    _id,
+    { $push: { events: eventCreated._id } },
+    { new: true }
+  );
 
-  // const postUpdated = await Post.findOneAndUpdate(
-  //   idPost ,
-  //   { $push: { comments: commentCreated._id } },
-  //   { new: true }
-  // );
-
-  // req.user = userUpdated;
-  // req.post= postUpdated;
-  // res.redirect(`feeds`);
+  req.user = userUpdated;
+  res.redirect("profile");
 };
 
 
