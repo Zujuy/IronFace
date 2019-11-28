@@ -66,11 +66,14 @@
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>Add your post</h4>
-      <input placeholder="Placeholder" id="post" type="text" class="validate">
+  {{!-- <form action="/staff/post" method="POST" enctype="multipart/form-data"> --}}
+  <form action="/{{user.role}}/post" method="POST" enctype="multipart/form-data">
+
+       <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="content">
       <div class="form-group">
             <div class="custom-file">
 
-
+      <form action="/post" method="POST" enctype="multipart/form-data">
               <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
               <label class="custom-file-label" for="validatedCustomFile">
                 <span>Choose file...</span>
