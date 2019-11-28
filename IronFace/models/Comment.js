@@ -12,8 +12,10 @@ const commentSchema = Schema({
   
   imagePath: String,
 
-  iamgeName: String,
-
+postID:{
+  type:Schema.Types.ObjectId,
+  ref:'Post'
+}
 
   
 });

@@ -7,7 +7,8 @@ const postSchema = Schema({
     type:Schema.Types.ObjectId,
     ref:'User'
   },
-  commentId:[{
+
+  comments:[{
     type:Schema.Types.ObjectId,
     ref:'Comment'
   }],
@@ -15,19 +16,7 @@ const postSchema = Schema({
   picPath: String,
   // picName: String,
 
-  point: {
-    type: {
-      address: {
-        type: String,
-        require: true
-      },
-      coordinates: {
-        type: [Number],
-        require: true
-      }
-    },
-    require: true
-  },
+
 
   notification: {
     type: Boolean,
@@ -35,10 +24,6 @@ const postSchema = Schema({
     default: true
   },
 
-  
-
-    
-  
 });
 
 const Post = mongoose.model('Post', postSchema);

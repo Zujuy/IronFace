@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
 
   postPost,
+  commentPost
 
 } = require("../controllers/student.controllers");
 
@@ -14,6 +15,9 @@ router.post("/profile", upload.single("photoURL"), profilePost);
 
 
 router.post("/post", upload.single("photoURL"), postPost);
+
+
+router.post("/comment", upload.single("photoURL"), commentPost);
 
 
 

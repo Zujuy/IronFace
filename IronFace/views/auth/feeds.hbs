@@ -31,15 +31,27 @@
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
+
                         <div class="modal-content">
                         <h4>Comment</h4>
-                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <form action="/{{user.role}}/comment" method="POST" enctype="multipart/form-data">
+
+                            <input name"content"placeholder="Placeholder" id="first_name" type="text" class="validate">
+
                             <label for="first_name">your comment</label>
                         </div>
                         <div class="modal-footer">
+
+                                <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">Submit
                         <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">comment</a>
+  
+  </button>
+
                         <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
                         </div>
+                        </form>
+
+
                     </div>          
             </div>
             </div>
