@@ -33,5 +33,5 @@ exports.postPost = async (req, res, next) => {
   );
 
   req.user = userUpdated;
-  res.redirect("/IronBuddy");
+  res.redirect(`profile`);
 };

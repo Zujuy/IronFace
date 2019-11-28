@@ -33,7 +33,7 @@ exports.postPost = async (req, res, next) => {
   );
 
   req.user = userUpdated;
-  res.redirect("/staff");
+  res.redirect(`profile`);
 };
 
 
