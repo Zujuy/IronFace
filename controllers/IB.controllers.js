@@ -35,7 +35,7 @@ exports.feedsGet = async (req, res) => {
 };
 
 exports.postPost = async (req, res, next) => {
-  const { _id, username, lastName} = req.user;
+  const { _id, username, lastName, photoURL} = req.user;
   let createPost;
   const {content} = req.body;
 
@@ -46,13 +46,15 @@ exports.postPost = async (req, res, next) => {
       authorlastName:lastName,
       content,
       picPath: req.file.secure_url,
+      authorPic:photoURL
     }
   }else {
     createPost ={
       creatorId:_id,
       authorName:username,
       authorlastName:lastName,
-      content
+      content,
+      authorPic:photoURL
     } 
     }
 

@@ -23,12 +23,12 @@
         <div class="row">
           <div class="card horizontal hoverable">
             <div class="card-image">
-              <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic"
+              <img src="{{this.authorPic}}" name="photoURL" alt="profile_image" id="profilepic"
                 class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
             <div class=" card-stacked">
               <div class="card-content">
-                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="blue-text blue lighten-2">
+                <a href="/{{../user.role}}/ironhacker/{{this.authorPic}}" class="blue-text blue lighten-2">
                   <h5>{{this.authorName}} {{this.authorlastName}}</h5>
                 </a>
                 <h5 class="grey-text">{{this.content}}</h5>

@@ -18,6 +18,11 @@ const postSchema = Schema({
     ref:'User'
   },
 
+  authorPic:{
+    type:String,
+    ref:'User'
+  },
+
   comments:[{
     type:Schema.Types.ObjectId,
     ref:'Comment'

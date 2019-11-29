@@ -4,18 +4,16 @@ const Comment = require("../models/Comment");
 const Event = require("../models/Event");
 
 exports.commentsGet = async (req, res) => {
-
   const { id } = req.params;
-  console.log(req.user)
-
-  const post = await Post.findById(id)
+  const post = await Post.findById(id).populate({
+    path: "users",
+    options: { sort: { createdAt: 1 } }
+  })
   .populate({
     path: "comments",
     options: { sort: { createdAt: 1 } }
   })
-
-
-  res.render("auth/detallepost", { post }) // cambiar la ruta con 
+  res.render("auth/detallepost", {user: req.user, post }) 
 }
 
 exports.feedsGet = async (req, res) => {
@@ -32,7 +30,7 @@ exports.feedsGet = async (req, res) => {
 };
 
 exports.postPost = async (req, res, next) => {
-  const { _id, username, lastName} = req.user;
+  const { _id, username, lastName, photoURL} = req.user;
   let createPost;
   const {content} = req.body;
 
@@ -43,13 +41,15 @@ exports.postPost = async (req, res, next) => {
       authorlastName:lastName,
       content,
       picPath: req.file.secure_url,
+      authorPic:photoURL
     }
   }else {
     createPost ={
       creatorId:_id,
       authorName:username,
       authorlastName:lastName,
-      content
+      content,
+      authorPic:photoURL
     } 
     }
 
@@ -65,7 +65,7 @@ exports.postPost = async (req, res, next) => {
 };
 
 exports.commentPost = async (req, res, next) => {
-  const { _id, username, lastName } = req.user;  
+  const { _id, username, lastName, photoURL} = req.user;  
   let createComment;
   const {content} = req.body;
   const idPost = req.body.idPost
@@ -77,7 +77,7 @@ exports.commentPost = async (req, res, next) => {
       authorlastName:lastName,
       postId:idPost,
       content,
-      picPath: req.file.secure_url,
+      picPath: req.file.secure_url
     }
   }else {
     createComment ={
@@ -85,7 +85,7 @@ exports.commentPost = async (req, res, next) => {
       creatorId:_id,
       authorName:username,
       authorlastName:lastName,
-      postId:idPost 
+      postId:idPost
     } 
     }
 
