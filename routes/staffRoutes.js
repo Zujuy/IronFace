@@ -10,7 +10,8 @@ const {
   eventGet,
   eventPost,
   alleventGet,
-  allusersGet
+  allusersGet,
+  profileDetailGet
 } = require("../controllers/staff.controllers");
 const { profileGet } = require("../controllers/auth.controllers");
 const upload = require("../config/cloudinary");
@@ -35,5 +36,9 @@ router.get("/allUsers", allusersGet);
 router.get("/allevents", alleventGet);
 
 router.post("/delete", deleteUserPost);
+
+router.get("/ironhacker/:id", profileDetailGet);
+
+
 
 module.exports = router;

@@ -165,8 +165,8 @@ exports.deletePostPost = async (req, res) => {
 
 
 
-exports.alleventGet = async (_, res) => {
-  const {user} = req;
+exports.alleventGet = async (req, res) => {
+  const {user}= req;
   const events = await Event.find().populate({
     path: "events",
     options: { sort: { createdAt: 1 } }
@@ -231,7 +231,7 @@ exports.eventPost = async (req, res, next) => {
 
 
 exports.allusersGet= async (req, res) => {
-  const { user} = req;
+  const {user} = req;
   const users = await User.find().populate({
     path: "favors",
     options: { sort: { createdAt: 1 } }
@@ -240,6 +240,17 @@ exports.allusersGet= async (req, res) => {
 };
 
 
+
+exports.profileDetailGet= async (req, res) =>{
+  const {user} = req;
+  const { id } = req.params
+  const users = await User.findById(id).populate({
+    path: "post",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/profiledetail", { user, users} );
+
+}
 
 
 

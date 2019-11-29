@@ -4,64 +4,17 @@
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
             <div class="col s2">
-              <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img">
+              <img src="{{users.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img">
             </div>
             <div class="col s10">
               <span>
-                <h3 class="blue-text text-blue lighten-2">{{user.username}} {{user.lastName}}</h3>
-                <h4 class="blue-text text-blue lighten-2">{{user.role}}</h4>
-                <p clas="grey-text">e-mail:{{user.email}}</p>
-                <p clas="grey-text">Gender:{{user.genre}}</p>
-                <p clas="grey-text">Birthday:{{user.birthdate}}</p>
-                <p clas="grey-text">Bootcamp:{{user.bootCamp}}</p>
-                <p clas="grey-text">Course mode:{{user.courseMode}}</p>
-
-                <!-- Modal para cambiar foto -->
-                  <a class="waves-effect blue lighten-2 btn modal-trigger" href="#modal"><i class="material-icons left">create</i>Edit profile pic</a>
-
-                  <!-- Modal Structure -->
-                  <div id="modal" class="modal">
-                    <div class="modal-content">
-                      <h4>Edit profile pic</h4>
-                      <div class="form-group">
-                            <div class="custom-file">
-                              <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
-                              <label class="custom-file-label" for="validatedCustomFile">
-                                <span>Choose file...</span>
-                              </label>
-                            </div>
-                          <label for="post">Edit profile picture</label>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Upload</a>
-                      <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Cancel</a>
-                    </div>
-                  </div>
-                </div>
-                {{!-- edit profile --}}
-                 <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><i class="material-icons left">create</i>Edit profile</a>
-
-
-                  <form class="col s12" action="/{{user.role}}/delete" method="POST">
-                     <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
-                  <a class="waves-effect red lighten-2 btn modal-trigger" type="submit"><i class="material-icons left">cancel</i>Delete User :(</a>
-                 </button>
-                  </form>
-
-                  
-                    </form>
-                        <!-- Modal Structure -->
-                        <div id="modal3" class="modal">
-                          <div class="modal-content">
-                            <h4>Delete User</h4>
-                            <p>Are you sure you want to delete the user?</p>
-                          </div>
-                          <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                          </div>
-                        </div>
-
+                <h3 class="blue-text text-blue lighten-2">{{users.username}} {{users.lastName}}</h3>
+                <h4 class="blue-text text-blue lighten-2">{{users.role}}</h4>
+                <p clas="grey-text">e-mail:{{users.email}}</p>
+                <p clas="grey-text">Gender:{{users.genre}}</p>
+                <p clas="grey-text">Birthday:{{users.birthdate}}</p>
+                <p clas="grey-text">Bootcamp:{{users.bootCamp}}</p>
+                <p clas="grey-text">Course mode:{{users.courseMode}}</p>
               </span>
             </div>
           </div>
@@ -69,52 +22,11 @@
       </div>
 
 
-<h2 class="blue-text text-blue lighten-2">My posts</h2>
-
-{{!-- boton para crear post  --}}
- 
-  <!-- Modal Trigger -->
-  <a class="waves-effect blue lighten-2 btn modal-trigger" href="#modal1"><i class="material-icons left">add</i>Add post</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Add your post</h4>
-  {{!-- <form action="/staff/post" method="POST" enctype="multipart/form-data"> --}}
-  <form action="/{{user.role}}/post" method="POST" enctype="multipart/form-data">
-
-       <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="content">
-      <div class="form-group">
-            <div class="custom-file">
-
-              <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
-              <label class="custom-file-label" for="validatedCustomFile">
-                <span>Choose file...</span>
-              </label>
-            </div>
-          <label for="post">write your post</label>
-    </div>
-    <div class="modal-footer">
+<h2 class="blue-text text-blue lighten-2"> {{users.username}}´s posts</h2>
 
 
-         <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
-      <a type="submit" > add</a>
-  </button>
-      <a  class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
-    </form>
-  </div>
-</div>
-</div>
-<div class= posts>
-  <div class="card horizontal hoverable">
-    <div class="card-image">
-    <img src="{{user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
-    </div>
-    <div class="card-stacked">
-      <div class="card-content">
-      <h5 class="header blue-text text-blue lighten-2">{{user.username}} {{user.lastName}}</h5>
-      <h5 class="grey-text">El viernes hay Iron chelas!!!!!!.</h5>
-      </div>
+
+
 <!-- Modal comentar -->
   <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
 
@@ -131,35 +43,49 @@
       </div>
   </div> 
 
-<!-- Modal ver comentarios -->
-  <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">See comments</a>
+  {{#each users.post}}
+            <div class="card-stacked">
+                <div class="card-content">
+                 <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}<p>{{this.authorRole}}</p></h5>
+                 <h5 class="grey-text">{{this.content}}</h5>
+                 </div>
+                    <!-- Modal comentar -->
+                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
 
-    <!-- Modal Structure -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-        <h4>Comments</h4>
-            <ul class="collection">
-            <li class="collection-item avatar">
-            <img src="../../images/profile pic.jpg" alt="" class="circle">
-            <p>este deberia ser el primer comentario</p>
-            </li>
-            </ul>
-            <ul class="collection">
-            <li class="collection-item avatar">
-            <img src="../../images/profile pic.jpg" alt="" class="circle">
-            <p>este deberia ser el segundo comentario</p>
-            </li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">back</a>
-        </div>
-    </div>   
-    </div>
-    </div>
-  </div>
+                    <!-- Modal Structure -->
+                    
+                    <div id="modal1" class="modal">
+                     <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
 
-</div> {{!-- div final --}}
+                        <div class="modal-content">
+                          <h4>Comment</h4>
+
+
+
+                            <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
+
+                            <label for="first_name">your comment</label>
+                         </div>
+                            <div class="modal-footer">
+
+                                          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit">
+                                             <a  >Comment</a>
+                                            </button>
+
+                                    <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+                                  </div>
+                     </form>
+                       </div> 
+
+                   
+                     
+                        <a type='submit' href="/{{../user.role}}/comments/{{this.id}}"  class="waves-effect  blue lighten-2 btn modal-trigger">See comments</a>
+                    </form>
+            </div>
+        </div>
+      </div>
+              {{/each}}
+
 
 <script>
   document.querySelector('input[name="photoURL"]').addEventListener('change', (e) => {
