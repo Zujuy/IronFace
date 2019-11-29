@@ -4,13 +4,8 @@ const Comment = require("../models/Comment");
 const Event = require("../models/Event");
 
 exports.commentsGet = async (req, res) => {
-  // console.log(req.params)
-  const { id } = req.params;
 
-  // const user = await User.findById().populate({
-  //   path: "users",
-  //   options: { sort: { createdAt: 1 } }
-  // });
+  const { id } = req.params;
 
 
   const post = await Post.findById(id).populate({
@@ -168,9 +163,14 @@ exports.deletePostPost = async (req, res) => {
 
 
 
-
-
-
+exports.alleventGet = async (_, res) => {
+  
+  const events = await Event.find().populate({
+    path: "events",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/events", { events });
+};
 
 
 exports.eventGet = async (req, res) => {
@@ -192,7 +192,7 @@ exports.eventPost = async (req, res, next) => {
     date,
     timeStart,
     place,
-    point: placeAddress,
+     address,
   } = req.body;
 
   const event = {
@@ -200,13 +200,14 @@ exports.eventPost = async (req, res, next) => {
      creatorName:username,
      creatorlastName:lastName,
       point: {
-      address: placeAddress,
+      address: address,
       coordinates: [lng, lat]
     },
       eventName,
       content,
       date,
-      timeStart
+      timeStart,
+      place
   };
 
   const eventCreated = await Event.create(event);

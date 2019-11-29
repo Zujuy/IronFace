@@ -80,10 +80,11 @@
   } else {
     console.log('Browser does not support geolocation.');
   }
-  geocoder.on("result", (e) => {
-    address.value = e.result.place_name;
-    lat.value = e.result.center[0];
-    lng.value = e.result.center[1];
+
+   geocoder.on('destination', ({ feature: { geometry: { coordinates } } }) => {
+    adress.value = mapboxInput.value
+    lng.value = coordinates[0]
+    lat.value = coordinates[1]
   })
   
 </script>

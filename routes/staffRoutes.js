@@ -8,7 +8,8 @@ const {
   deleteUserPost,
   commentsGet,
   eventGet,
-  eventPost
+  eventPost,
+  alleventGet
 } = require("../controllers/staff.controllers");
 const { profileGet } = require("../controllers/auth.controllers");
 const upload = require("../config/cloudinary");
@@ -24,5 +25,8 @@ router.post("/edit", upload.single("photoURL"), editUserPost);
 
 router.get("/event", eventGet);
 router.post("/event", eventPost);
+
+router.get("/allevents", alleventGet);
+
 
 module.exports = router;
