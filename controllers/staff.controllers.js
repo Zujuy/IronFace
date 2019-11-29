@@ -124,8 +124,9 @@ exports.editUserGet = async (req, res) => {
 exports.editUserPost = async (req, res) => {
   let userUpdated;
   const { _id} = req.user;
-  const {username,lastName,password,genre,birthdate,wFrom,bootCamp,courseMode} = req.body;
+  const {username,lastName,password,genre,birthdate,bootCamp,courseMode} = req.body;
   if (req.file) {
+    console.log('aaaaaaaaaaaaaaaaaaa', req.file)
     userUpdated = await User.findByIdAndUpdate(_id, {
       $set: {
         username,
@@ -135,6 +136,7 @@ exports.editUserPost = async (req, res) => {
         birthdate,
         bootCamp,
         courseMode,
+        photoURL: req.file.secure_url
       }
     });
   } else {
@@ -199,7 +201,7 @@ exports.eventPost = async (req, res, next) => {
     date,
     timeStart,
     place,
-     address,
+    eventplace,
   } = req.body;
 
   const event = {
@@ -214,7 +216,8 @@ exports.eventPost = async (req, res, next) => {
       content,
       date,
       timeStart,
-      place
+      place,
+      eventplace,
   };
 
   const eventCreated = await Event.create(event);

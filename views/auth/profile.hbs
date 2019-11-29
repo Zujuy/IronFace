@@ -34,14 +34,15 @@
                   <label for="post">Edit profile picture</label>
                 </div>
                 <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Upload</a>
+                  <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">Upload</button>
                   <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Cancel</a>
                 </div>
               </div>
             </div>
             {{!-- edit profile --}}
-            <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><iclass="material-icons left">create</i>Edit profile</a>
-
+            <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><i class="material-icons left">create</i>Edit profile</a>
+            <br/>
+            
             <form>
             <button class="waves-effect blue lighten-2 btn modal-trigger" type="submit"><i class="material-icons left">cancel</i>Delete User</button>
             </form>
@@ -56,6 +57,7 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
               </div>
             </div>
+            </div> 
 
           </span>
         </div>
@@ -63,6 +65,12 @@
     </div>
   </div>
 
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="divider"></div>
+
+<div class="col s10 center-align">
 
   <h2 class="blue-text text-blue lighten-2">My posts</h2>
 
@@ -93,19 +101,24 @@
         <div class="modal-footer">
 
 
-          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
-            <a type="submit"> add</a>
+          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">add</button>
           </button>
           <a class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
       </form>
     </div>
   </div>
 </div>
+</div>
 
+<div class="divider"></div>
+<div class="divider"></div>
 
 {{#each post}}
-<div>
-            <div class="card horizontal hoverable">
+<div class="container">
+<div class="divider"></div>
+<div class="divider"></div>
+<div class="col s10 center-align">
+            <div class="horizontal hoverable">
             <div class="card-image">
                 <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
@@ -143,7 +156,8 @@
             </div>
         </div>
       </div>
-      
+   </div>   
+   <br/>
 {{/each}}
 
 
