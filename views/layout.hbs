@@ -27,7 +27,7 @@
       <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
-        <li><a href="/">About us</a></li>
+        <li><a href="/aboutus">About us</a></li>
         <li><a href="login"> Log In</a></li>
       </ul>
     </div>
@@ -37,7 +37,7 @@
 
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/">Home</a></li>
-        <li><a href="/">About us</a></li>
+        <li><a href="https://www.ironhack.com/es">About us</a></li>
         <li><a href="login"> Log In</a></li>
   </ul>
 {{/if}}
@@ -50,6 +50,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
       </ul>
@@ -61,6 +62,7 @@
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
   </ul>
@@ -74,6 +76,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
       </ul>
@@ -85,6 +88,7 @@
   <ul class="sidenav right" id="mobile-demo">
     <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/logout"> Log Out</a></li>
   </ul>
@@ -98,9 +102,11 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span><i class="material-icons right">notifications_active</i></a></li>
         <li><a href="/">Add Student</a></li>
         <li><a href="/logout"> Log Out</a></li>
+
       </ul>
     </div>
   </nav>
@@ -110,7 +116,8 @@
   <ul class="sidenav right" id="mobile-demo">
         <li><a href="/{{user.role}}/feeds">Feeds</a></li>
         <li><a href="/{{user.role}}/profile"><i class="material-icons right">person</i></a></li>
-        <li><a href="/">Agregar Usuarios</a></li>
+        <li><a href="/{{user.role}}/allUsers"><i class="material-icons right">group</i></a></li>
+        <li><a href="/">Add student</a></li>
         <li><a href="/"><span class="new badge blue lighten-2">4</span></a><i class="material-icons right">notifications_active</i></li>
         <li><a href="/"> Add student</a></li>
         <li><a href="/logout"> Log Out</a></li>

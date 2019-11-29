@@ -1,13 +1,13 @@
-
 <div class="row container">
+    <h4 class="grey-text center-align">All the Ironhackers</h4>
     <!-- Page Layout here -->
 <div class="col s12">
     <div class="row">
       <div class="col s3" >
           <h5 class="center-align blue-text text-blue lighten-2">Events</h5>
             <div class="collection">
-                <a href="/{{user.role}}/event" class="collection-item grey-text">Crear eventos</a>
-                <a href="/{{user.role}}/allevents" class="collection-item grey-text">Eventos</a>
+                <a href="/{{user.role}}/event" class="collection-item grey-text">Add events</a>
+                <a href="/{{user.role}}/allevents" class="collection-item grey-text">Events</a>
             </div>
             <h5 class="center-align blue-text text-blue lighten-2">Adds</h5>
             <div class="collection">
@@ -18,50 +18,28 @@
                 <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
             </div>
       </div>
-
-
+    
       <div class="col s9">
-        <div class="card horizontal hoverable">
+
+            {{#each users}}
+        <div>
+            <div class="card horizontal hoverable">
             <div class="card-image">
-            <img src="{{post.user.photoURL}}">
+                <img src="{{this.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                <h5 class="header blue-text text-blue lighten-2">{{post.authorName}} {{post.authorlastName}} </h5>
-                <h5 class="grey-text">{{post.content}}</h5>
-                </div>
+                 <a class="blue-text blue lighten-2" href="/{{../user.role}}/ironhacker/{{../user._id}}" ><h5>{{this.username}} {{this.lastName}}</h5></a>
+                     <p>{{this.role}}</p></h5>
+                     <p>{{this.bootCamp}}</p></h5>
+                     <p>{{this.birthdate}}</p>
+                       </div> 
             </div>
         </div>
+      </div>
+              {{/each}}
+
     </div>
-
-
-<div class="divider"></div>
-<div class="divider"></div>
-<div class="divider"></div>
-
-
-<h4>Comments</h4>
-
-    {{#each post.comments}}
-    <ul class="collection">
-    <li class="collection-item avatar">
-    <img src="../../images/profile pic.jpg" alt="" class="circle">
-    <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}} </h5>
-    <p>{{this.content}}</p>
-    </li>
-    </ul>
-    {{/each}} 
-
-
-
-    {{!-- <ul class="collection">
-    <li class="collection-item avatar">
-    <img src="../images/profile pic.jpg" alt="" class="circle">
-    <p>este deberia ser el segundo comentario</p>
-    </li>
-    </ul> --}}
-
-
 </div>
 </div>
 </div>

@@ -27,22 +27,10 @@
       <div class="input-field col s6">
         <input type="text" class="eventplace" name="place">
         <label for="eventplace">Place of the event</label>
-        <div id='map'></div>
+        <div id='map' name="map"></div>
       </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input id="lng" type="text" name="lng" hidden>
-        </div>
-        <div class="input-field col s6">
-          <input id="lat" type="text" name="lat" hidden>
-        </div>
-        <div class="input-field col s6">
-          <input id="address" type="text" name="location[address]" hidden>
-        </div>
-      </div>
-
-    <div class="control">
-    <button class="button is-link  btn waves-effect blue lighten-2"type = 'submit'>Submit</button>
+        <div class="control">
+        <button class="button is-link  btn waves-effect blue lighten-2"type = 'submit'>Submit</button>
   
     </div>
 
@@ -54,6 +42,7 @@
   const address = document.getElementById("address");
   const lat = document.getElementById("lat");
   const lng = document.getElementById("lng");
+
   mapboxgl.accessToken = 'pk.eyJ1IjoienVqdXkiLCJhIjoiY2szNjI3MHBjMWQzeTNpbW1sZGY1cTVheiJ9.j76A6ZI9b60J3GAK8Lh0XA';
   
   const map = new mapboxgl.Map({
@@ -62,7 +51,8 @@
     zoom:15
   });
   const geoCoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken
+    accessToken: mapboxgl.accessToken,
+    marker: true,
   })
   map.addControl(geoCoder)
 
@@ -80,12 +70,11 @@
   } else {
     console.log('Browser does not support geolocation.');
   }
-
-   geocoder.on('destination', ({ feature: { geometry: { coordinates } } }) => {
-    adress.value = mapboxInput.value
-    lng.value = coordinates[0]
-    lat.value = coordinates[1]
+  geocoder.on("result", (e) => {
+    address.value = e.result.place_name;
+    lat.value = e.result.center[0];
+    lng.value = e.result.center[1];
   })
-  
+
 </script>
 </div>

@@ -2,7 +2,7 @@
 <h3> Edit profile</h3>
   
   <div class="row">
-    <form class="col s12" action="/signup" method="POST">
+    <form class="col s12" action="/{{user.role}}/edit" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="input-field col s6" >
           <input id="first_name" type="text" class="validate"  name="username">
@@ -13,30 +13,37 @@
           <label for="last_name">Last Name</label>
         </div>
       </div>
+
+
      <div class="row">
-        <div class="input-field col s6">
-          <input id="first_name" type="text" class="validate" name="email">
-          <label for="first_name">e-mail</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" name="password">
-          <label for="last_name">Password</label>
-        </div>
+      <div class="input-field col s6">
+          <div class="file-field input-field">
+            <div class="btn blue lighten-2">
+              <span>Profile Pic</span>
+              <input type="file" name="photoURL">
+            </div>
+            <div class="file-path-wrapper">
+              <input class="file-path validate" type="text">
+            </div>
+      </div>
       </div>
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s6">
         <input type="text" class="datepicker" name="birthdate">
         <label for="birthday">Birthday</label>
-    </div>
-        <div class="input-field col s4">
+        </div>
+      </div>
+
+
+      <div class="row">
+      <div class="input-field col s6">
         <select name="genre" multiple>
-      {{!-- <option value="" disabled selected>Choose your option</option> --}}
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-    </select>
-    <label>Gender</label>
-  </div>
-        <div class="input-field col s4">
+      </select>
+     <label>Gender</label>
+      </div>
+    <div class="input-field col s6">
     <select name="bootCamp" multiple>
       {{!-- <option value="" disabled selected>Choose your option</option> --}}
       <option value="Data Analytics">Data Analytics</option>
@@ -46,6 +53,7 @@
     <label>Bootcamp</label>
   </div>
   </div>
+
     <div class="row">
         <div class="input-field col s6">
     <select name="courseMode" multiple>
@@ -55,21 +63,8 @@
     </select>
     <label>Course Mode</label>
   </div>
-     <div class="input-field col s6">
-    <select name="role" multiple>
-      {{!-- <option value="role" disabled selected>Choose your option</option> --}}
-      <option value="Student">Student</option>
-      <option value="Teacher Assistant">Teacher Assistant</option>
-      <option value="Lead Teacher">Lead Teacher</option>
-      <option value="Staff">Staff</option>
-      <option value="Iron Buddy">Iron Buddy</option>
-    </select>
-    <label>User</label>
-  </div>
  </div>
-   <button class="btn waves-effect blue lighten-2" type="submit" name="action">Submit
-    <i class="material-icons right">edit</i>
-  </button>
+ <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">DONE</button>
     </form>
   </div>
 </div>

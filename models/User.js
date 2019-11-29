@@ -36,30 +36,25 @@ const userSchema = Schema({
 
   bootCamp: {
     type: String,
-    // required: true,
     enum: ["Data Analytics", "Web Development", "UX/UI Design"],
 
   },
 
   courseMode:{
     type: String,
-    // required: true,
     enum: ["Full time", "Part time"],
-    // default:"Staff"
+    
   },
 
   role: {
     type: String,
+    required: true,
     enum: ["Student","TeacherAssistant","LeadTeacher","Staff", "IronBuddy"],
-    default:"Student"
   },
 
   photoURL: {
     type: String,
-  
     default:"../images/alumno.png"
-
-    
   },
 
   post:[

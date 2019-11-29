@@ -4,26 +4,18 @@ const Comment = require("../models/Comment");
 const Event = require("../models/Event");
 
 exports.commentsGet = async (req, res) => {
-  // console.log(req.params)
+
   const { id } = req.params;
+  console.log(req.user)
 
-  // const user = await User.findById().populate({
-  //   path: "users",
-  //   options: { sort: { createdAt: 1 } }
-  // });
-
-
-  const post = await Post.findById(id).populate({
-    path: "users",
-    options: { sort: { createdAt: 1 } }
-  })
+  const post = await Post.findById(id)
   .populate({
     path: "comments",
     options: { sort: { createdAt: 1 } }
   })
 
 
-  res.render("auth/detallepost", {user: req.user, post }) // cambiar la ruta con 
+  res.render("auth/detallepost", { post }) // cambiar la ruta con 
 }
 
 exports.feedsGet = async (req, res) => {
@@ -129,19 +121,20 @@ exports.editUserGet = async (req, res) => {
 exports.editUserPost = async (req, res) => {
   let userUpdated;
   const { _id} = req.user;
-  const {username,lastName,genre,birthdate,wFrom,bootCamp,courseMode} = req.body;
+  const {username,lastName,password,genre,birthdate,bootCamp,courseMode} = req.body;
   if (req.file) {
+    console.log('aaaaaaaaaaaaaaaaaaa', req.file)
     userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {
+      
         username,
         lastName,
         genre,
+        password,
         birthdate,
-        wFrom,
         bootCamp,
         courseMode,
         photoURL: req.file.secure_url
-      }
+      
     });
   } else {
     userUpdated = await User.findByIdAndUpdate(_id, {
@@ -149,26 +142,36 @@ exports.editUserPost = async (req, res) => {
         username,
         lastName,
         genre,
+        password,
         birthdate,
-        wFrom,
         bootCamp,
         courseMode
       }
     });
   }
   req.user = userUpdated;
-  res.redirect(`/profile`);
+  res.redirect(`profile`);
 };
+
+
+
 
 exports.deletePostPost = async (req, res) => {
   const { _idPost} = req.body;
   userUpdated = await Post.findByIdAndDelete(_idPost);
-  res.redirect(`/feeds`);
+  res.redirect(`feeds`);
 }
 
 
 
-
+exports.alleventGet = async (req, res) => {
+  const {user}= req;
+  const events = await Event.find().populate({
+    path: "events",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/events", {user ,events});
+};
 
 
 
@@ -182,6 +185,9 @@ exports.eventGet = async (req, res) => {
   res.render("auth/crearevento", { user });
 };
 
+
+
+
 exports.eventPost = async (req, res, next) => {
   const { _id, username, lastName } = req.user;
   const {
@@ -192,7 +198,7 @@ exports.eventPost = async (req, res, next) => {
     date,
     timeStart,
     place,
-    point: placeAddress,
+    eventplace,
   } = req.body;
 
   const event = {
@@ -200,13 +206,15 @@ exports.eventPost = async (req, res, next) => {
      creatorName:username,
      creatorlastName:lastName,
       point: {
-      address: placeAddress,
+      address: address,
       coordinates: [lng, lat]
     },
       eventName,
       content,
       date,
-      timeStart
+      timeStart,
+      place,
+      eventplace,
   };
 
   const eventCreated = await Event.create(event);
@@ -222,16 +230,34 @@ exports.eventPost = async (req, res, next) => {
 
 
 
+exports.allusersGet= async (req, res) => {
+  const {user} = req;
+  const users = await User.find().populate({
+    path: "favors",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/allUsers", { user, users} );
+};
 
 
 
+exports.profileDetailGet= async (req, res) =>{
+  const {user} = req;
+  const { id } = req.params
+  const users = await User.findById(id).populate({
+    path: "post",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/profiledetail", { user, users} );
+
+}
 
 
 
 
 exports.deleteUserPost = async (req, res) => {
-  const { _id} = req.body;
+  const { _id} = req.user;
   userUpdated = await User.findByIdAndDelete(_id);
-  res.redirect(`/feeds`);
+  res.redirect(`/`);
 }
  

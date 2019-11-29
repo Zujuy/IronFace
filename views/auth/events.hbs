@@ -3,81 +3,55 @@
 <div class="col s12">
     <div class="row">
       <div class="col s3" >
+          <h5 class="center-align blue-text text-blue lighten-2">Events</h5>
+            <div class="collection">
+                <a href="/{{user.role}}/event" class="collection-item grey-text">Crear eventos</a>
+                <a href="/{{user.role}}/allevents" class="collection-item grey-text">Eventos</a>
+            </div>
             <h5 class="center-align blue-text text-blue lighten-2">Adds</h5>
             <div class="collection">
-                <a href="#!" class="collection-item grey-text">Find books</a>
-                <a href="#!" class="collection-item grey-text">Find who helps</a>
+                <a href="https://barelo-app.herokuapp.com/" class="collection-item grey-text">Share your books with Barelo</a>
+                <a href="https://hostinn.herokuapp.com/" class="collection-item grey-text">HostInn</a>
+                <a href="https://vaquita-app.herokuapp.com/" class="collection-item grey-text">Vaquita</a>
+                <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
+                <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
             </div>
-              <nav>
-                <div class="nav-wrapper">
-                <form>
-                    <div class="input-field  blue lighten-2">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                    </div>
-                </form>
-                </div>
-            </nav>
       </div>
     
-
       <div class="col s9">
-        <div>
+        <div class="row">
+        <div class="search">
+              <h5 class="card-title grey-text">Find Ironhackers</h5>
+              <form id="searchBar" action="/vistasperfiles" method="POST">
+                <input id="searchValue" name="search" class="form-control mr-sm-2 " type="search" placeholder="Ironhacker name" aria-label="Search">
+                <button id="search-button" class="waves-effect white-text blue lighten-2 btn-flat" type="submit"><i class="material-icons">search</i>Search</button>
+              </form>
+            </div>
+         </div>
+      </div>
+    
+{{#each events}}
+      <div class="col s9">
+        <div class="row">
             <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="../images/Staff hombre.png"> <!-- imagen de perfil de usuario -->
+                <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
-            <div class="card-stacked">
+            <div class=" card-stacked">
                 <div class="card-content">
-                <h5 class="header blue-text text-blue lighten-2">{{user.username}} {{user.lastName}}</h5>
-                <h5 class="grey-text">El viernes hay Iron chelas!!!!!!.</h5>
-                </div>
-                <!-- Modal comentar -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
-
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                        <h4>Comment</h4>
-                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                            <label for="first_name">your comment</label>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">comment</a>
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
-                        </div>
-                    </div> 
-
-                <!-- Modal ver comentarios -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">See comments</a>
-
-                    <!-- Modal Structure -->
-                    <div id="modal2" class="modal">
-                        <div class="modal-content">
-                        <h4>Comments</h4>
-                            <ul class="collection">
-                            <li class="collection-item avatar">
-                            <img src="../images/profile pic.jpg" alt="" class="circle">
-                            <p>este deberia ser el primer comentario</p>
-                            </li>
-                            </ul>
-                            <ul class="collection">
-                            <li class="collection-item avatar">
-                            <img src="../images/profile pic.jpg" alt="" class="circle">
-                            <p>este deberia ser el segundo comentario</p>
-                            </li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect  blue lighten-2 btn-flat">back</a>
-                        </div>
-                    </div>   
+                <h3 class="header blue-text text-blue lighten-2">{{this.eventName}}</h3>
+                <h4 class="grey-text">{{this.creatorName}} {{this.creatorlastName}}</h4>
+                <h5>{{this.content}}</h5>
+                <p> Date: {{this.date}}</p>
+                <p> Time: {{this.timeStart}} </p>
+                <p> Place: {{this.place}}</p>
             </div>
         </div>
       </div>
-
+      </div>
     </div>
+{{/each}}
+  
 </div>
 </div>
 </div>
