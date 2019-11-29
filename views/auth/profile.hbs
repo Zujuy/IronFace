@@ -16,36 +16,16 @@
             <p clas="grey-text">Bootcamp:{{user.bootCamp}}</p>
             <p clas="grey-text">Course mode:{{user.courseMode}}</p>
 
-            <!-- Modal para cambiar foto -->
-            <a class="waves-effect blue lighten-2 btn modal-trigger" href="#modal"><i
-                class="material-icons left">create</i>Edit profile pic</a>
-
-            <!-- Modal Structure -->
-            <div id="modal" class="modal">
-              <div class="modal-content">
-                <h4>Edit profile pic</h4>
-                <div class="form-group">
-                  <div class="custom-file">
-                    <input name="photoURL" type="file" class="custom-file-input" id="validatedCustomFile">
-                    <label class="custom-file-label" for="validatedCustomFile">
-                      <span>Choose file...</span>
-                    </label>
-                  </div>
-                  <label for="post">Edit profile picture</label>
-                </div>
-                <div class="modal-footer">
-                  <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">Upload</button>
-                  <a href="#!" class="modal-close waves-effect blue lighten-2 btn-flat">Cancel</a>
-                </div>
-              </div>
-            </div>
             {{!-- edit profile --}}
+            <div class="col s10right-align">
             <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><i class="material-icons left">create</i>Edit profile</a>
-            <br/>
-            
+            </div>
+            <div class="col s10 left-align">
             <form>
             <button class="waves-effect blue lighten-2 btn modal-trigger" type="submit"><i class="material-icons left">cancel</i>Delete User</button>
             </form>
+            </div>
+
             <!-- Modal Structure -->
             <div id="modal3" class="modal">
               <div class="modal-content">
@@ -57,8 +37,7 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
               </div>
             </div>
-            </div> 
-
+        </div>
           </span>
         </div>
       </div>

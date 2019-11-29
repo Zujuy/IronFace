@@ -6,19 +6,16 @@ const Event = require("../models/Event");
 exports.commentsGet = async (req, res) => {
 
   const { id } = req.params;
+  console.log(req.user)
 
-
-  const post = await Post.findById(id).populate({
-    path: "users",
-    options: { sort: { createdAt: 1 } }
-  })
+  const post = await Post.findById(id)
   .populate({
     path: "comments",
     options: { sort: { createdAt: 1 } }
   })
 
 
-  res.render("auth/detallepost", {user: req.user, post }) // cambiar la ruta con 
+  res.render("auth/detallepost", { post }) // cambiar la ruta con 
 }
 
 exports.feedsGet = async (req, res) => {
@@ -128,7 +125,7 @@ exports.editUserPost = async (req, res) => {
   if (req.file) {
     console.log('aaaaaaaaaaaaaaaaaaa', req.file)
     userUpdated = await User.findByIdAndUpdate(_id, {
-      $set: {
+      
         username,
         lastName,
         genre,
@@ -137,7 +134,7 @@ exports.editUserPost = async (req, res) => {
         bootCamp,
         courseMode,
         photoURL: req.file.secure_url
-      }
+      
     });
   } else {
     userUpdated = await User.findByIdAndUpdate(_id, {

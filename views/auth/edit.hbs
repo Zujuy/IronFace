@@ -2,7 +2,7 @@
 <h3> Edit profile</h3>
   
   <div class="row">
-    <form class="col s12" action="/{{user.role}}/edit" method="POST">
+    <form class="col s12" action="/{{user.role}}/edit" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="input-field col s6" >
           <input id="first_name" type="text" class="validate"  name="username">
@@ -13,39 +13,37 @@
           <label for="last_name">Last Name</label>
         </div>
       </div>
+
+
      <div class="row">
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate" name="password">
-          <label for="last_name">Password</label>
-        </div>
       <div class="input-field col s6">
-         {{!-- <form action="submit"> --}}
           <div class="file-field input-field">
             <div class="btn blue lighten-2">
-              <span></span>
-              <input type="file" name="Profile pic">
+              <span>Profile Pic</span>
+              <input type="file" name="photoURL">
             </div>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text">
             </div>
-          {{!-- </div>
-          </form> --}}
       </div>
       </div>
       <div class="row">
-        <div class="input-field col s4">
+        <div class="input-field col s6">
         <input type="text" class="datepicker" name="birthdate">
         <label for="birthday">Birthday</label>
-    </div>
-        <div class="input-field col s4">
+        </div>
+      </div>
+
+
+      <div class="row">
+      <div class="input-field col s6">
         <select name="genre" multiple>
-      {{!-- <option value="" disabled selected>Choose your option</option> --}}
       <option value="Male">Male</option>
       <option value="Female">Female</option>
-    </select>
-    <label>Gender</label>
-  </div>
-        <div class="input-field col s4">
+      </select>
+     <label>Gender</label>
+      </div>
+    <div class="input-field col s6">
     <select name="bootCamp" multiple>
       {{!-- <option value="" disabled selected>Choose your option</option> --}}
       <option value="Data Analytics">Data Analytics</option>
@@ -55,6 +53,7 @@
     <label>Bootcamp</label>
   </div>
   </div>
+
     <div class="row">
         <div class="input-field col s6">
     <select name="courseMode" multiple>
@@ -65,8 +64,7 @@
     <label>Course Mode</label>
   </div>
  </div>
-
-  <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">DONE</button>
+ <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">DONE</button>
     </form>
   </div>
 </div>

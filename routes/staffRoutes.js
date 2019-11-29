@@ -25,7 +25,7 @@ router.post("/comment", upload.single("photoURL"), commentPost);
 
 
 router.get("/edit", editUserGet);
-router.post("/edit", editUserPost);
+router.post("/edit", upload.single("photoURL"), editUserPost);
 
 router.get("/event", eventGet);
 router.post("/event", eventPost);

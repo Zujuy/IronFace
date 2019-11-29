@@ -1,5 +1,4 @@
-<div class="row container">
-    <!-- Page Layout here -->
+
 <div class="row container">
     <!-- Page Layout here -->
 <div class="col s12">
@@ -19,24 +18,12 @@
                 <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
             </div>
       </div>
-    
-      <div class="col s9">
-        <div class="row">
-        <div class="search">
-              <h5 class="card-title grey-text">Find Ironhackers</h5>
-              <form id="searchBar" action="/vistasperfiles" method="POST">
-                <input id="searchValue" name="search" class="form-control mr-sm-2 " type="search" placeholder="Ironhacker name" aria-label="Search">
-                <button id="search-button" class="waves-effect white-text blue lighten-2 btn-flat" type="submit"><i class="material-icons">search</i>Search</button>
-              </form>
-            </div>
-         </div>
-      </div>
-    
+
 
       <div class="col s9">
         <div class="card horizontal hoverable">
             <div class="card-image">
-                {{!-- <img src="../../images/Staff hombre.png"> <!-- imagen de perfil de usuario --> --}}
+            <img src="{{post.user.photoURL}}">
             </div>
             <div class="card-stacked">
                 <div class="card-content">
@@ -58,7 +45,7 @@
     {{#each post.comments}}
     <ul class="collection">
     <li class="collection-item avatar">
-    {{!-- <img src="../../images/profile pic.jpg" alt="" class="circle"> --}}
+    <img src="../../images/profile pic.jpg" alt="" class="circle">
     <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}} </h5>
     <p>{{this.content}}</p>
     </li>
