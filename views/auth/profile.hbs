@@ -94,7 +94,7 @@
 
 
           <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
-            <a type="submit"> add</a>
+            <a type="submit" class="white-text waves-effect blue lighten-2 btn-flat"> add</a>
           </button>
           <a class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
       </form>
@@ -113,16 +113,16 @@
   
             <div class="card-stacked">
                 <div class="card-content">
-                 <h5 class="header blue-text text-blue lighten-2">  
-                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="white-text waves-effect blue lighten-2 btn-flat"><h6>{{this.authorName}} {{this.authorlastName}}</h6></a>
+            
+               <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}</h5>
                  <h5 class="grey-text">{{this.content}}</h5>
                  </div>
                     <!-- Modal comentar -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
+                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">Comment</a>
 
                     <!-- Modal Structure -->
                     
-                    <div id="modal1" class="modal">
+                    <div id="modal2" class="modal">
                      <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
 
                         <div class="modal-content">
@@ -137,7 +137,7 @@
                                   </div>
                      </form>
                     </div> 
-                    
+                    <br>
                     <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text waves-effect blue lighten-2 btn-flat">See comments</a>
                     </form>
             </div>

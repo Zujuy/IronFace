@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+          <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+              <div class="col s2">
+                <img src="{{users.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img">
+              </div>
+              <div class="col s10">
+                <span>
+                  <h3 class="blue-text text-blue lighten-2">{{users.username}} {{users.lastName}}</h3>
+                  <h4 class="blue-text text-blue lighten-2">{{users.role}}</h4>
+                  <p clas="grey-text">e-mail:{{users.email}}</p>
+                  <p clas="grey-text">Gender:{{users.genre}}</p>
+                  <p clas="grey-text">Birthday:{{users.birthdate}}</p>
+                  <p clas="grey-text">Bootcamp:{{users.bootCamp}}</p>
+                  <p clas="grey-text">Course mode:{{users.courseMode}}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <h2 class="blue-text text-blue lighten-2"> {{users.username}}´s posts</h2>
+      
+      
+      
+      
+      
+      </div>
+      
+      
+      {{#each users.post}}
+      <div class="container">
+        <div class="card horizontal hoverable">
+            <div class="card-image">
+                <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
+            </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}<p>{{this.authorRole}}
+              </p>
+            </h5>
+            <h5 class="grey-text">{{this.content}}</h5>
+          </div>
+          <!-- Modal comentar -->
+          <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
+      
+          <!-- Modal Structure -->
+      
+          <div id="modal1" class="modal">
+            <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
+      
+              <div class="modal-content">
+                <h4>Comment</h4>
+                <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
+      
+                <label for="first_name">your comment</label>
+              </div>
+              <div class="modal-footer">
+      
+                <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit">
+                  <a>Comment</a> 
+                </button>
+      
+                <a class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+              </div>
+            </form>
+          </div>
+         <button type="submit"
+                      class="white-text waves-effect blue lighten-2 btn-flat center-align">
+       <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text" >See comments</a>
+      </button>
+     
+        </div>
+      </div>
+      </div>
+      
+
+      {{/each}}
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <script>
+        document.querySelector('input[name="photoURL"]').addEventListener('change', (e) => {
+          document.querySelector('custom-file-input span').innerText = e.target.files[0].name
+        })
+      </script>
+      
+</body>
+</html>
