@@ -1,5 +1,5 @@
 # IronFace
-### social network for Ironhackers
+### Social network for Ironhackers
 
 Because we know slack is not enough and mail... com'on it's not like we are in an office!
 
