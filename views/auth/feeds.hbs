@@ -13,36 +13,30 @@
                 <a href="#!" class="collection-item grey-text">Find books</a>
                 <a href="#!" class="collection-item grey-text">Find who helps</a>
             </div>
-              <nav>
-                <div class="nav-wrapper">
-                <form>
-                    <div class="input-field  blue lighten-2">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                    </div>
-                </form>
-                </div>
-            </nav>
       </div>
     
       <div class="col s9">
+        <div class="row">
+        <div class="search">
+              <h5 class="card-title grey-text">Find Ironhackers</h5>
+              <form id="searchBar" action="/vistasperfiles" method="POST">
+                <input id="searchValue" name="search" class="form-control mr-sm-2 " type="search" placeholder="Ironhacker name" aria-label="Search">
+                <button id="search-button" class="waves-effect blue lighten-2 btn-flat" type="submit">Search</button>
+              </form>
+            </div>
+         </div>
+      </div>
 
             {{#each post}}
-        <div>
+        <div class="col s9"> 
+        <div class="row">
             <div class="card horizontal hoverable">
             <div class="card-image">
                 <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
-
-  
-            <div class="card-stacked">
-                <div class="card-content">
-                 <h5 class="header blue-text text-blue lighten-2">
-                     
-                     
-    <a type='submit' href="/{{../user.role}}/ironhacker/{{../user._id}}"  class="waves-effect  blue lighten-2 btn modal-trigger">{{this.authorName}} {{this.authorlastName}}</a>
-                     </h5>
+            <div class=" card-stacked">
+                <div class="card-content"> 
+                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="blue-text blue lighten-2"><h5>{{this.authorName}} {{this.authorlastName}}</h5></a>
                  <h5 class="grey-text">{{this.content}}</h5>
                  </div>
                     <!-- Modal comentar -->
@@ -53,36 +47,27 @@
                     <div id="modal1" class="modal">
                      <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
 
-                        <div class="modal-content">
-                          <h4>Comment</h4>
-
-
-
-                            <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
-
-                            <label for="first_name">your comment</label>
+                    <div class="modal-content">
+                        <h4>Comment</h4>
+                        <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
+                        <label for="first_name">your comment</label>
                          </div>
                             <div class="modal-footer">
-
-                                          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit">
-                                             <a  >Comment</a>
-                                            </button>
-
-                                    <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+                                <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit"><a class="white-text">Comment</a></button>
+                                <a class="modal-close waves-effect white-text blue lighten-2 btn-flat">Cancel</a>
                                   </div>
                      </form>
-                       </div> 
-
-                   
-                     
-                        <a type='submit' href="/{{../user.role}}/comments/{{this.id}}"  class="waves-effect  blue lighten-2 btn modal-trigger">See comments</a>
+                    </div> 
+                    <br/>
+                    
+                    <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text waves-effect blue lighten-2 btn-flat center-align">See comments</a>
                     </form>
             </div>
         </div>
       </div>
-              {{/each}}
-
     </div>
+              {{/each}}
+</div>
 </div>
 </div>
 </div>

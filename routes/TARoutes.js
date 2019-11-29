@@ -25,4 +25,7 @@ router.post("/edit", upload.single("photoURL"), editUserPost);
 router.get("/event", eventGet);
 router.post("/event", upload.single("photoURL"), eventPost);
 
+const User = require("../models/User");
+
+
 module.exports = router;

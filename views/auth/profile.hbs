@@ -40,18 +40,10 @@
               </div>
             </div>
             {{!-- edit profile --}}
-            <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><i
-                class="material-icons left">create</i>Edit profile</a>
+            <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><iclass="material-icons left">create</i>Edit profile</a>
 
-
-            <form class="col s12" action="/{{user.role}}/delete" method="POST">
-              <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
-                <a class="waves-effect red lighten-2 btn modal-trigger" type="submit"><i
-                    class="material-icons left">cancel</i>Delete User :(</a>
-              </button>
-            </form>
-
-
+            <form>
+            <button class="waves-effect blue lighten-2 btn modal-trigger" type="submit"><i class="material-icons left">cancel</i>Delete User</button>
             </form>
             <!-- Modal Structure -->
             <div id="modal3" class="modal">
@@ -60,7 +52,7 @@
                 <p>Are you sure you want to delete the user?</p>
               </div>
               <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                <button class="waves-effect blue lighten-2 btn modal-trigger" type="submit" action="/{{user.role}}/delete" method="POST"><i class="material-icons left">cancel</i>Delete</button>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
               </div>
             </div>
@@ -111,9 +103,8 @@
 </div>
 
 
-
 {{#each post}}
-        <div>
+<div>
             <div class="card horizontal hoverable">
             <div class="card-image">
                 <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
@@ -122,7 +113,8 @@
   
             <div class="card-stacked">
                 <div class="card-content">
-                 <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}<p>{{this.authorRole}}</p></h5>
+                 <h5 class="header blue-text text-blue lighten-2">  
+                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="white-text waves-effect blue lighten-2 btn-flat"><h6>{{this.authorName}} {{this.authorlastName}}</h6></a>
                  <h5 class="grey-text">{{this.content}}</h5>
                  </div>
                     <!-- Modal comentar -->
@@ -135,32 +127,24 @@
 
                         <div class="modal-content">
                           <h4>Comment</h4>
-
-
-
                             <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
 
                             <label for="first_name">your comment</label>
                          </div>
                             <div class="modal-footer">
-
-                                          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit">
-                                             <a  >Comment</a>
-                                            </button>
-
-                                    <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+                                <button class="white-text waves-effect blue lighten-2 btn-flat" type="submit"><a>Comment</a></button>
+                                <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
                                   </div>
                      </form>
-                       </div> 
-
-                   
-                     
-                        <a type='submit' href="/{{../user.role}}/comments/{{this.id}}"  class="waves-effect  blue lighten-2 btn modal-trigger">See comments</a>
+                    </div> 
+                    
+                    <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text waves-effect blue lighten-2 btn-flat">See comments</a>
                     </form>
             </div>
         </div>
       </div>
-              {{/each}}
+      
+{{/each}}
 
 
 

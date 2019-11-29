@@ -42,7 +42,7 @@ exports.signupPost = async (req, res, next) => {
       action: "/signup",
       title: "Sign up",
       register: true,
-      err: "User already exists"
+      err: "User already"
     };
     res.render('auth/signup', templateConfig);
   });

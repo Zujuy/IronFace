@@ -24,24 +24,21 @@ const eventSchema = Schema({
   },
 
 
-  point: {
-    type: {
-      address: {
-        type: String,
-        require: true
-      },
-      coordinates: {
-        type: [Number],
-        require: true
-      }
+  eventplace: {
+    address: {
+      type: String
     },
-    require: true
+    coordinates: {
+      lat: [Number],
+      lng: [Number],
+    }
   },
 
 timeStart:{
  type:String
 },
-place:String
+
+place:String,
 
 });
 

@@ -40,5 +40,7 @@ router.post("/delete", deleteUserPost);
 router.get("/ironhacker/:id", profileDetailGet);
 
 
+const User = require("../models/User");
+
 
 module.exports = router;
