@@ -17,12 +17,6 @@ usermail: leadt@ironhack.com
 Pass: asd
 
 
-Teaching assistand
-usermail: TA@ironhack.com
-
-Pass: asd
-
-
 Student
 usermail: alumno@ironhack.com
 
