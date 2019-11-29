@@ -60,4 +60,10 @@ main {
   header, main, footer {
     padding-left: 0; } }
 
+.a-btn-see {
+  width: 100% !important; }
+
+.a-btn-see button {
+  width: 100% !important; }
+
 /*# sourceMappingURL=style.css.map */

@@ -33,7 +33,12 @@
                 <p>Are you sure you want to delete the user?</p>
               </div>
               <div class="modal-footer">
-                <button class="waves-effect blue lighten-2 btn modal-trigger" type="submit" action="/{{user.role}}/delete" method="POST"><i class="material-icons left">cancel</i>Delete</button>
+      <form class="col s12" action="/{{user.role}}/delete" method="POST">
+              <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
+                <a class="waves-effect red lighten-2 btn modal-trigger" type="submit"><i
+                    class="material-icons left">cancel</i>Delete User :(</a>
+              </button>
+            </form>
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
               </div>
             </div>
@@ -80,9 +85,9 @@
         <div class="modal-footer">
 
 
-          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">add</button>
-          </button>
-          <a class="modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
+          <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action"></button>
+          <button class="white-text waves-effect blue lighten-2 btn-flat" type="submit">add</button>
+          <a class="white-text modal-close waves-effect blue lighten-2 btn-flat">cancel</a>
       </form>
     </div>
   </div>
@@ -105,16 +110,16 @@
   
             <div class="card-stacked">
                 <div class="card-content">
-                 <h5 class="header blue-text text-blue lighten-2">  
-                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="white-text waves-effect blue lighten-2 btn-flat"><h6>{{this.authorName}} {{this.authorlastName}}</h6></a>
+            
+               <h5 class="header blue-text text-blue lighten-2">{{this.authorName}} {{this.authorlastName}}</h5>
                  <h5 class="grey-text">{{this.content}}</h5>
                  </div>
                     <!-- Modal comentar -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
+                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal2">Comment</a>
 
                     <!-- Modal Structure -->
                     
-                    <div id="modal1" class="modal">
+                    <div id="modal2" class="modal">
                      <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
 
                         <div class="modal-content">
@@ -124,12 +129,12 @@
                             <label for="first_name">your comment</label>
                          </div>
                             <div class="modal-footer">
-                                <button class="white-text waves-effect blue lighten-2 btn-flat" type="submit"><a>Comment</a></button>
-                                <a  class="modal-close waves-effect  blue lighten-2 btn-flat">Cancel</a>
+                                <button class="white-text waves-effect lighten-2 btn-flat" type="submit"><a>Comment</a></button>
+                                <a class="grey-text waves-effect lighten-2 btn-flat">Cancel</a>
                                   </div>
                      </form>
                     </div> 
-                    
+                    <br>
                     <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text waves-effect blue lighten-2 btn-flat">See comments</a>
                     </form>
             </div>

@@ -1,6 +1,6 @@
 <div class="row container">
-    <!-- Page Layout here -->
-<div class="col s12">
+  <!-- Page Layout here -->
+  <div class="col s12">
     <div class="row">
       <div class="col s3" >
           <h5 class="center-align blue-text text-blue lighten-2">Events</h5>
@@ -21,44 +21,57 @@
             {{#each post}}
         <div class="col s9"> 
         <div class="row">
-            <div class="card horizontal hoverable">
+          <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic" class="responsive-img"> <!-- imagen de perfil de usuario -->
+              <img src="{{../user.photoURL}}" name="photoURL" alt="profile_image" id="profilepic"
+                class="responsive-img"> <!-- imagen de perfil de usuario -->
             </div>
             <div class=" card-stacked">
-                <div class="card-content"> 
-                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="blue-text blue lighten-2"><h5>{{this.authorName}} {{this.authorlastName}}</h5></a>
-                 <h5 class="grey-text">{{this.content}}</h5>
-                 </div>
-                    <!-- Modal comentar -->
-                    <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
+              <div class="card-content">
+                <a href="/{{../user.role}}/ironhacker/{{../user._id}}" class="blue-text blue lighten-2">
+                  <h5>{{this.authorName}} {{this.authorlastName}}</h5>
+                </a>
+                <h5 class="grey-text">{{this.content}}</h5>
+                <img src="{{this.picPath}}" alt="" class="responsive-img">
 
-                    <!-- Modal Structure -->
-                    
-                    <div id="modal1" class="modal">
-                     <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
+              </div>
+              <!-- Modal comentar -->
+              <a class="waves-effect  blue lighten-2 btn modal-trigger" href="#modal1">Comment</a>
 
-                    <div class="modal-content">
-                        <h4>Comment</h4>
-                        <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
-                        <label for="first_name">your comment</label>
-                         </div>
-                            <div class="modal-footer">
-                                <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit"><a class="white-text">Comment</a></button>
-                                <a class="modal-close waves-effect white-text blue lighten-2 btn-flat">Cancel</a>
-                                  </div>
-                     </form>
-                    </div> 
-                    <br/>
-                    
-                    <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text waves-effect blue lighten-2 btn-flat center-align">See comments</a>
-                    </form>
+              <!-- Modal Structure -->
+
+              <div id="modal1" class="modal">
+                <form action="/{{../user.role}}/comment" method="POST" enctype="multipart/form-data">
+
+                  <div class="modal-content">
+                    <h4>Comment</h4>
+                    <input name="content" placeholder="Placeholder" id="first_name" type="text" class="validate">
+                    <label for="first_name">your comment</label>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit"><a
+                        class="white-text">Comment</a></button>
+                    <a class="modal-close waves-effect white-text blue lighten-2 btn-flat">Cancel</a>
+                  </div>
+                </form>
+              </div>
+              <br />
+               <a href="/{{../user.role}}/comments/{{this.id}}" class="white-text a-btn-see" >
+<button type="submit"
+                class="white-text waves-effect blue lighten-2 btn center-align">
+See comments
+</button>
+</a>
+             
+  
             </div>
+          </div>
         </div>
       </div>
+
+     
+      {{/each}}
+        </div>
     </div>
-              {{/each}}
-</div>
-</div>
-</div>
-</div>
+  </div>
+
