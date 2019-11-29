@@ -1,4 +1,5 @@
 <div class="row container">
+    <h4 class="grey-text center-align">All the Ironhackers</h4>
     <!-- Page Layout here -->
 <div class="col s12">
     <div class="row">
@@ -10,20 +11,12 @@
             </div>
             <h5 class="center-align blue-text text-blue lighten-2">Adds</h5>
             <div class="collection">
-                <a href="#!" class="collection-item grey-text">Find books</a>
-                <a href="#!" class="collection-item grey-text">Find who helps</a>
+                <a href="https://barelo-app.herokuapp.com/" class="collection-item grey-text">Share your books with Barelo</a>
+                <a href="https://hostinn.herokuapp.com/" class="collection-item grey-text">HostInn</a>
+                <a href="https://vaquita-app.herokuapp.com/" class="collection-item grey-text">Vaquita</a>
+                <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
+                <a href="https://dynamic-course.herokuapp.com/" class="collection-item grey-text">Keep Learning with DYNAMIC</a>
             </div>
-              <nav>
-                <div class="nav-wrapper">
-                <form>
-                    <div class="input-field  blue lighten-2">
-                    <input id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                    </div>
-                </form>
-                </div>
-            </nav>
       </div>
     
       <div class="col s9">
@@ -36,7 +29,7 @@
             </div>
             <div class="card-stacked">
                 <div class="card-content">
-                 <a type='submit' href="/{{../user.role}}/ironhacker/{{../user._id}}"  class="waves-effect  blue lighten-2 btn modal-trigger">{{this.username}} {{this.lastName}}</a>
+                 <a class="blue-text blue lighten-2" href="/{{../user.role}}/ironhacker/{{../user._id}}" ><h5>{{this.username}} {{this.lastName}}</h5></a>
                      <p>{{this.role}}</p></h5>
                      <p>{{this.bootCamp}}</p></h5>
                      <p>{{this.birthdate}}</p>

@@ -25,9 +25,6 @@ const eventSchema = Schema({
 
 
   eventplace: {
-    address: {
-      type: String
-    },
     coordinates: {
       lat: [Number],
       lng: [Number],
