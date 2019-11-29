@@ -166,13 +166,15 @@ exports.deletePostPost = async (req, res) => {
 
 
 exports.alleventGet = async (_, res) => {
-  
+  const {user} = req;
   const events = await Event.find().populate({
     path: "events",
     options: { sort: { createdAt: 1 } }
   });
-  res.render("auth/events", { events });
+  res.render("auth/events", {user ,events});
 };
+
+
 
 
 exports.eventGet = async (req, res) => {
@@ -183,6 +185,9 @@ exports.eventGet = async (req, res) => {
   });
   res.render("auth/crearevento", { user });
 };
+
+
+
 
 exports.eventPost = async (req, res, next) => {
   const { _id, username, lastName } = req.user;
@@ -225,7 +230,14 @@ exports.eventPost = async (req, res, next) => {
 
 
 
-
+exports.allusersGet= async (req, res) => {
+  const { user} = req;
+  const users = await User.find().populate({
+    path: "favors",
+    options: { sort: { createdAt: 1 } }
+  });
+  res.render("auth/allUsers", { user, users} );
+};
 
 
 
@@ -233,7 +245,7 @@ exports.eventPost = async (req, res, next) => {
 
 
 exports.deleteUserPost = async (req, res) => {
-  const { _id} = req.body;
+  const { _id} = req.user;
   userUpdated = await User.findByIdAndDelete(_id);
   res.redirect(`/`);
 }

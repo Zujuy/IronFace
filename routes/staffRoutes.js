@@ -9,7 +9,8 @@ const {
   commentsGet,
   eventGet,
   eventPost,
-  alleventGet
+  alleventGet,
+  allusersGet
 } = require("../controllers/staff.controllers");
 const { profileGet } = require("../controllers/auth.controllers");
 const upload = require("../config/cloudinary");
@@ -27,6 +28,9 @@ router.post("/edit", editUserPost);
 
 router.get("/event", eventGet);
 router.post("/event", eventPost);
+
+router.get("/allUsers", allusersGet);
+
 
 router.get("/allevents", alleventGet);
 
