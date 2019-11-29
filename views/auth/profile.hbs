@@ -40,8 +40,16 @@
                 </div>
                 {{!-- edit profile --}}
                  <a class="waves-effect blue lighten-2 btn modal-trigger" href="/{{user.role}}/edit"><i class="material-icons left">create</i>Edit profile</a>
-                  <a class="waves-effect blue lighten-2 btn modal-trigger" href=""><i class="material-icons left">cancel</i>Delete User</a>
 
+
+                  <form class="col s12" action="/{{user.role}}/delete" method="POST">
+                     <button class="modal-close waves-effect blue lighten-2 btn-flat" type="submit" name="action">
+                  <a class="waves-effect red lighten-2 btn modal-trigger" type="submit"><i class="material-icons left">cancel</i>Delete User :(</a>
+                 </button>
+                  </form>
+
+                  
+                    </form>
                         <!-- Modal Structure -->
                         <div id="modal3" class="modal">
                           <div class="modal-content">

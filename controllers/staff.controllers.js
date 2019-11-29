@@ -235,6 +235,6 @@ exports.eventPost = async (req, res, next) => {
 exports.deleteUserPost = async (req, res) => {
   const { _id} = req.body;
   userUpdated = await User.findByIdAndDelete(_id);
-  res.redirect(`/feeds`);
+  res.redirect(`/`);
 }
  

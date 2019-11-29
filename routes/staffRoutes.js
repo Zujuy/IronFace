@@ -30,5 +30,6 @@ router.post("/event", eventPost);
 
 router.get("/allevents", alleventGet);
 
+router.post("/delete", deleteUserPost);
 
 module.exports = router;
