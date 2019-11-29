@@ -20,8 +20,10 @@ router.get("/profile", profileGet);
 // router.post("/profile", upload.single("photoURL"), profilePost);
 router.post("/post", upload.single("photoURL"), postPost);
 router.post("/comment", upload.single("photoURL"), commentPost);
+
+
 router.get("/edit", editUserGet);
-router.post("/edit", upload.single("photoURL"), editUserPost);
+router.post("/edit", editUserPost);
 
 router.get("/event", eventGet);
 router.post("/event", eventPost);

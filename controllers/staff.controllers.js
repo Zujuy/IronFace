@@ -124,18 +124,17 @@ exports.editUserGet = async (req, res) => {
 exports.editUserPost = async (req, res) => {
   let userUpdated;
   const { _id} = req.user;
-  const {username,lastName,genre,birthdate,wFrom,bootCamp,courseMode} = req.body;
+  const {username,lastName,password,genre,birthdate,wFrom,bootCamp,courseMode} = req.body;
   if (req.file) {
     userUpdated = await User.findByIdAndUpdate(_id, {
       $set: {
         username,
         lastName,
         genre,
+        password,
         birthdate,
-        wFrom,
         bootCamp,
         courseMode,
-        photoURL: req.file.secure_url
       }
     });
   } else {
@@ -144,21 +143,24 @@ exports.editUserPost = async (req, res) => {
         username,
         lastName,
         genre,
+        password,
         birthdate,
-        wFrom,
         bootCamp,
         courseMode
       }
     });
   }
   req.user = userUpdated;
-  res.redirect(`/profile`);
+  res.redirect(`profile`);
 };
+
+
+
 
 exports.deletePostPost = async (req, res) => {
   const { _idPost} = req.body;
   userUpdated = await Post.findByIdAndDelete(_idPost);
-  res.redirect(`/feeds`);
+  res.redirect(`feeds`);
 }
 
 
